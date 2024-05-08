@@ -1,4 +1,6 @@
+import PieLayout from "@/components/pieChart/PieLayout";
 import { Link } from "react-router-dom";
+
 
 const HomePageDashboad = () => {
   return (
@@ -12,7 +14,7 @@ const HomePageDashboad = () => {
                   $45,385
                 </span>
                 <h3 className="text-base font-normal text-gray-500">
-                  Sales this week
+                  Funds this week
                 </h3>
               </div>
               <div className="flex items-center justify-end flex-1 text-green-500 text-base font-bold">
@@ -31,7 +33,9 @@ const HomePageDashboad = () => {
                 </svg>
               </div>
             </div>
-            <div id="main-chart"></div>
+            <div id="main-chart">
+              <PieLayout/>
+            </div>
           </div>
           <div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
             <div className="mb-4 flex items-center justify-between">
@@ -86,7 +90,7 @@ const HomePageDashboad = () => {
                             <span className="font-semibold">Bonnie Green</span>
                           </td>
                           <td className="p-4 whitespace-nowrap text-sm font-normal text-gray-500">
-                            Apr 23 ,2021
+                            Apr 23 ,2024
                           </td>
                           <td className="p-4 whitespace-nowrap text-sm font-semibold text-gray-900">
                             $2300
@@ -182,7 +186,7 @@ const HomePageDashboad = () => {
                   2,340
                 </span>
                 <h3 className="text-base font-normal text-gray-500">
-                  New products this week
+                  New supplies this week
                 </h3>
               </div>
               <div className="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">
@@ -206,10 +210,10 @@ const HomePageDashboad = () => {
             <div className="flex items-center">
               <div className="flex-shrink-0">
                 <span className="text-2xl sm:text-3xl leading-none font-bold text-gray-900">
-                  5,355
+                  5,355 Places
                 </span>
                 <h3 className="text-base font-normal text-gray-500">
-                  Visitors this week
+                  Visited this week
                 </h3>
               </div>
               <div className="ml-5 w-0 flex items-center justify-end flex-1 text-green-500 text-base font-bold">

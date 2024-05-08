@@ -1,4 +1,33 @@
+import React, { useState, useEffect } from "react";
+
 const Carousal = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  // Array of images for the carousel
+  const images = [
+    "https://mdbcdn.b-cdn.net/img/new/slides/041.webp",
+    "https://mdbcdn.b-cdn.net/img/new/slides/042.webp",
+    "https://mdbcdn.b-cdn.net/img/new/slides/043.webp",
+  ];
+
+  // Function to handle automatic sliding
+  const handleAutoSlide = () => {
+    const nextIndex = (activeIndex + 1) % images.length;
+    setActiveIndex(nextIndex);
+  };
+
+  useEffect(() => {
+    // Set interval for automatic sliding
+    const interval = setInterval(handleAutoSlide, 3000);
+
+    // Clear interval on component unmount
+    return () => clearInterval(interval);
+  }, [activeIndex]);
+
+  const handleSlide = (index: React.SetStateAction<number>) => {
+    setActiveIndex(index);
+  };
+
   return (
     <div>
       <div
@@ -11,65 +40,45 @@ const Carousal = () => {
           className="absolute bottom-0 left-0 right-0 z-[2] mx-[15%] mb-4 flex list-none justify-center p-0"
           data-twe-carousel-indicators
         >
-          <button
-            type="button"
-            data-twe-target="#carouselExampleIndicators"
-            data-twe-slide-to="0"
-            data-twe-carousel-active
-            className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-            aria-current="true"
-            aria-label="Slide 1"
-          ></button>
-          <button
-            type="button"
-            data-twe-target="#carouselExampleIndicators"
-            data-twe-slide-to="1"
-            className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-            aria-label="Slide 2"
-          ></button>
-          <button
-            type="button"
-            data-twe-target="#carouselExampleIndicators"
-            data-twe-slide-to="2"
-            className="mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 -indent-[999px] opacity-50 transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none"
-            aria-label="Slide 3"
-          ></button>
+          {images.map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              data-twe-target="#carouselExampleIndicators"
+              data-twe-slide-to={index}
+              onClick={() => handleSlide(index)}
+              className={`mx-[3px] box-content h-[3px] w-[30px] flex-initial cursor-pointer border-0 border-y-[10px] border-solid border-transparent bg-white bg-clip-padding p-0 ${
+                index === activeIndex
+                  ? "-indent-[999px] opacity-100"
+                  : "-indent-[999px] opacity-50"
+              } transition-opacity duration-[600ms] ease-[cubic-bezier(0.25,0.1,0.25,1.0)] motion-reduce:transition-none`}
+              aria-current={index === activeIndex ? "true" : undefined}
+              aria-label={`Slide ${index + 1}`}
+            ></button>
+          ))}
         </div>
 
         <div className="relative w-full overflow-hidden after:clear-both after:block after:content-['']">
-          <div
-            className="relative float-left -mr-[100%] w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-            data-twe-carousel-item
-            data-twe-carousel-active
-          >
-            <img
-              src="https://mdbcdn.b-cdn.net/img/new/slides/041.webp"
-              className="block w-full"
-              alt="Wild Landscape"
-            />
-          </div>
-
-          <div
-            className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-            data-twe-carousel-item
-          >
-            <img
-              src="https://mdbcdn.b-cdn.net/img/new/slides/042.webp"
-              className="block w-full"
-              alt="Camera"
-            />
-          </div>
-
-          <div
-            className="relative float-left -mr-[100%] hidden w-full transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
-            data-twe-carousel-item
-          >
-            <img
-              src="https://mdbcdn.b-cdn.net/img/new/slides/043.webp"
-              className="block w-full"
-              alt="Exotic Fruits"
-            />
-          </div>
+          {images.map((image, index) => (
+            <div
+              key={index}
+              className={`relative float-left ${
+                index === activeIndex
+                  ? "-mr-[100%] transition-transform duration-[600ms] ease-in-out motion-reduce:transition-none"
+                  : "hidden"
+              } w-full`}
+              data-twe-carousel-item
+              data-twe-carousel-active={
+                index === activeIndex ? "true" : undefined
+              }
+            >
+              <img
+                src={image}
+                className="block w-full"
+                alt={`Slide ${index + 1}`}
+              />
+            </div>
+          ))}
         </div>
 
         <button
@@ -77,19 +86,22 @@ const Carousal = () => {
           type="button"
           data-twe-target="#carouselExampleIndicators"
           data-twe-slide="prev"
+          onClick={() =>
+            handleSlide((activeIndex - 1 + images.length) % images.length)
+          }
         >
           <span className="inline-block h-8 w-8">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
               className="h-6 w-6"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M15.75 19.5L8.25 12l7.5-7.5"
               />
             </svg>
@@ -104,19 +116,20 @@ const Carousal = () => {
           type="button"
           data-twe-target="#carouselExampleIndicators"
           data-twe-slide="next"
+          onClick={() => handleSlide((activeIndex + 1) % images.length)}
         >
           <span className="inline-block h-8 w-8">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="1.5"
+              strokeWidth="1.5"
               stroke="currentColor"
               className="h-6 w-6"
             >
               <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeLinecap="round"
+                strokeLinejoin="round"
                 d="M8.25 4.5l7.5 7.5-7.5 7.5"
               />
             </svg>

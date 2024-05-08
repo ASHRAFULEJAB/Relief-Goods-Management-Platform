@@ -1,7 +1,7 @@
 const DistributionCenterLocation = () => {
   return (
     <div>
-      <div className="text-center font-semibold text-red-500 text-3xl">
+      <div className="text-center font-semibold text-[#074495] text-3xl">
         Distribution center location
       </div>
       <div className="container my-24 mx-auto md:px-6">
@@ -41,14 +41,15 @@ const DistributionCenterLocation = () => {
                         </div>
                       </div>
                       <div className="ml-6 grow">
-                        <p className="mb-2 font-bold dark:text-white">
-                          Technical support
-                        </p>
+                        <p className="mb-2 font-bold dark:text-white">U.S.A</p>
                         <p className="text-neutral-500 dark:text-neutral-200">
-                          support@example.com
+                          support@usphfund.com
                         </p>
                         <p className="text-neutral-500 dark:text-neutral-200">
                           +1 234-567-89
+                        </p>
+                        <p className="text-neutral-500 dark:text-neutral-200">
+                          299 Street, Washigton D.C
                         </p>
                       </div>
                     </div>
@@ -75,13 +76,16 @@ const DistributionCenterLocation = () => {
                       </div>
                       <div className="ml-6 grow">
                         <p className="mb-2 font-bold dark:text-white">
-                          Sales questions
+                          United Kingdom
                         </p>
                         <p className="text-neutral-500 dark:text-neutral-200">
-                          sales@example.com
+                          fund@ukphfund.com
                         </p>
                         <p className="text-neutral-500 dark:text-neutral-200">
                           +1 234-567-89
+                        </p>
+                        <p className="text-neutral-500 dark:text-neutral-200">
+                          118 Westminster Road,U.K
                         </p>
                       </div>
                     </div>
@@ -107,12 +111,15 @@ const DistributionCenterLocation = () => {
                         </div>
                       </div>
                       <div className="ml-6 grow">
-                        <p className="mb-2 font-bold dark:text-white">Press</p>
+                        <p className="mb-2 font-bold dark:text-white">Dhaka</p>
                         <p className="text-neutral-500 dark:text-neutral-200">
-                          press@example.com
+                          supportdk@phfundbd.com
                         </p>
                         <p className="text-neutral-500 dark:text-neutral-200">
-                          +1 234-567-89
+                          +88 234-567-89
+                        </p>
+                        <p className="text-neutral-500 dark:text-neutral-200">
+                          99 Road,Gulshan 1
                         </p>
                       </div>
                     </div>
@@ -139,13 +146,16 @@ const DistributionCenterLocation = () => {
                       </div>
                       <div className="ml-6 grow">
                         <p className="mb-2 font-bold dark:text-white">
-                          Bug report
+                          Chattrogram
                         </p>
                         <p className="text-neutral-500 dark:text-neutral-200">
-                          bugs@example.com
+                          chfund@phrelief.com
                         </p>
                         <p className="text-neutral-500 dark:text-neutral-200">
-                          +1 234-567-89
+                          +88 2934-567-89
+                        </p>
+                        <p className="text-neutral-500 dark:text-neutral-200">
+                          12 Road Khulsi, CTG
                         </p>
                       </div>
                     </div>

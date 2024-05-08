@@ -44,7 +44,7 @@ const Footer = () => {
         </div>
 
         <div className="w-full bg-[#074495] text-white p-4 text-center">
-          © 2024 Copyright:
+          © 2024 Copyright -
           <a href="https://tw-elements.com/" className=""> PH RELIEF FUND</a>
         </div>
       </footer>

@@ -76,7 +76,7 @@ const Navbar = () => {
 
           <div className="flex items-center">
             <Link
-              to="/all-relief"
+              to="/relief-goods"
               data-twe-ripple-init
               data-twe-ripple-color="light"
               className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs 
