@@ -9,7 +9,7 @@ const Navbar = () => {
       data-twe-navbar-ref
     >
       <div
-        className="flex w-full flex-wrap items-center justify-between 
+        className="flex w-full  flex-wrap items-center justify-between 
        max-w-[1230px] px-[20px] mx-auto"
       >
         <div>
@@ -86,7 +86,8 @@ const Navbar = () => {
             >
               All Relief Goods
             </Link>
-            <div
+            <Link
+              to="/dashboard"
               data-twe-ripple-init
               data-twe-ripple-color="light"
               className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs 
@@ -95,7 +96,7 @@ const Navbar = () => {
                 focus:ring-0 active:text-primary-700 600 ndary-500 ndary-500 ondary-500"
             >
               Dashboard
-            </div>
+            </Link>
             <Link to="/login">
               {" "}
               <Button
@@ -115,7 +116,12 @@ const Navbar = () => {
                 type="button"
                 data-twe-ripple-init
                 data-twe-ripple-color="light"
-                className="me-3 inline-block rounded bg-[#E37423] px-3 py-2.5 text-xs font-medium uppercase leading-normal text-neutral-50 shadow-dark-3 transition duration-150 ease-in-out hover:bg-neutral-700 hover:shadow-dark-2 focus:bg-neutral-700 focus:shadow-dark-2 focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-dark-2 motion-reduce:transition-none  rk-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+                className="me-3 inline-block rounded bg-[#E37423] px-3 py-2.5 text-xs font-medium 
+                uppercase leading-normal text-neutral-50 shadow-dark-3 transition duration-150 
+                ease-in-out hover:bg-[#E37423] hover:shadow-dark-2 focus:bg-[#E37423] 
+                focus:shadow-dark-2 focus:outline-none focus:ring-0 active:bg-[#E37423]
+                 active:shadow-dark-2 motion-reduce:transition-none  rk-strong 
+                 dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
               >
                 Register
               </Button>

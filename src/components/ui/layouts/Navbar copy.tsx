@@ -76,7 +76,7 @@ const Navbar = () => {
 
           <div className="flex items-center">
             <Link
-              to="/all-relief"
+              to="/relief-goods"
               data-twe-ripple-init
               data-twe-ripple-color="light"
               className="me-3 inline-block rounded px-2 pb-2 pt-2.5 text-xs 
@@ -100,7 +100,7 @@ const Navbar = () => {
               {" "}
               <Button
                 type="button"
-                className="me-3 inline-block rounded bg-white px-3 py-2.5 text-xs font-medium uppercase
+                className="me-3 inline-block rounded-lg bg-white px-3 py-2.5 text-xs font-medium uppercase
                leading-normal text-black shadow-dark-3 transition duration-150 
                ease-in-out hover:bg-white hover:shadow-dark-2 focus:bg-neutral-700 
                focus:shadow-dark-2 focus:outline-none focus:ring-0 active:bg-neutral-900 
@@ -115,7 +115,13 @@ const Navbar = () => {
                 type="button"
                 data-twe-ripple-init
                 data-twe-ripple-color="light"
-                className="me-3 inline-block rounded bg-[#E37423] px-3 py-2.5 text-xs font-medium uppercase leading-normal text-neutral-50 shadow-dark-3 transition duration-150 ease-in-out hover:bg-neutral-700 hover:shadow-dark-2 focus:bg-neutral-700 focus:shadow-dark-2 focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-dark-2 motion-reduce:transition-none  rk-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+                className="me-3 inline-block rounded-lg 
+                bg-[#E37423] px-3 py-2.5 text-xs font-medium uppercase leading-norma
+                l text-neutral-50 shadow-dark-3 transition duration-150 ease-in-out
+                 hover:bg-neutral-700 hover:shadow-dark-2 focus:bg-neutral-700 focus:shadow-dark-2
+                  focus:outline-none focus:ring-0 active:bg-neutral-900 active:shadow-dark-2
+                   motion-reduce:transition-none  rk-strong dark:focus:shadow-dark-strong 
+                   dark:active:shadow-dark-strong"
               >
                 Register
               </Button>
