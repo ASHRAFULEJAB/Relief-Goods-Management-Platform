@@ -1,8 +1,11 @@
 import App from "@/App";
 import Login from "@/components/Login";
 import Register from "@/components/Register";
+import AddSupply from "@/pages/AddSupply";
 import AllRelief from "@/pages/Allrelief/AllRelief";
-import Dashboard from "@/pages/dashboard";
+import AllSupply from "@/pages/allSupply";
+import DashboardLayout from "@/pages/dashboard/DashboardLayout";
+import HomePageDashboad from "@/pages/dashboard/HomePageDashboad";
 import Home from "@/pages/home/Home";
 
 import { createBrowserRouter } from "react-router-dom";
@@ -22,10 +25,7 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "dashboard",
-    element: <Dashboard />,
-  },
+
   {
     path: "login",
     element: <Login />,
@@ -33,6 +33,24 @@ const router = createBrowserRouter([
   {
     path: "register",
     element: <Register />,
+  },
+  {
+    path: "/dashboard",
+    element: <DashboardLayout />,
+    children: [
+      {
+        path: "/dashboard",
+        element: <HomePageDashboad />,
+      },
+      {
+        path: "/dashboard/supplies",
+        element: <AllSupply />,
+      },
+      {
+        path: "/dashboard/create-supply",
+        element: <AddSupply />,
+      },
+    ],
   },
 ]);
 

@@ -1,6 +1,6 @@
 const AllRelief = () => {
   return (
-    <div className="grid lg:grid-cols-3 my-5 gap-3 ">
+    <div className="grid lg:grid-cols-3 my-5 gap-3">
       <div className="block rounded-lg bg-red-500 shadow-secondary-1 dark:bg-surface-dark">
         <div
           className="relative overflow-hidden bg-cover bg-no-repeat"
