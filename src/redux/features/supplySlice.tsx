@@ -1,22 +1,25 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-const initialState = {
-  supplies: [],
-};
 
 type TSupply = {
   title: string;
-  description: string; // Fixed typo here
+  description: string;
   amount: string;
   category: string;
   image: string;
+};
+type TInitailState = {
+  supplies: TSupply[];
+};
+const initialState: TInitailState = {
+  supplies: [],
 };
 
 const supplySlice = createSlice({
   name: "supply",
   initialState,
   reducers: {
-    addTodo: (state, action: PayloadAction<TSupply>) => {
-      state.supplies.push({ ...action.payload });
+    addSupply: (state, action: PayloadAction<TSupply>) => {
+      state.supplies.push(action.payload);
     },
     // removeTodo: (state, action: PayloadAction<string>) => {
     //   state.supplies = state.supplies.filter(
@@ -30,5 +33,5 @@ const supplySlice = createSlice({
   },
 });
 
-export const { addTodo } = supplySlice.actions;
+export const { addSupply } = supplySlice.actions;
 export default supplySlice.reducer;
