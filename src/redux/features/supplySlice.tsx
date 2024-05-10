@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 type TSupply = {
+  id: string;
   title: string;
   description: string;
   amount: string;
@@ -21,17 +22,19 @@ const supplySlice = createSlice({
     addSupply: (state, action: PayloadAction<TSupply>) => {
       state.supplies.push(action.payload);
     },
-    // removeTodo: (state, action: PayloadAction<string>) => {
-    //   state.supplies = state.supplies.filter(
-    //     (item) => item.id !== action.payload
-    //   );
-    // },
-    // toggoleComplete: (state, action: PayloadAction<string>) => {
-    //   const task = state.supplies.find((item) => item.id === action.payload);
-    //   task!.isCompleted = !task?.isCompleted;
-    // },
+    removeSupply: (state, action: PayloadAction<string>) => {
+      state.supplies = state.supplies.filter(
+        (item) => item.id !== action.payload
+      );
+    },
+    updateSupply: (state, action: PayloadAction<TSupply>) => {
+      const updatedSupply = action.payload;
+      state.supplies = state.supplies.map((supply) =>
+        supply.id === updatedSupply.id ? updatedSupply : supply
+      );
+    },
   },
 });
 
-export const { addSupply } = supplySlice.actions;
+export const { addSupply, removeSupply, updateSupply } = supplySlice.actions;
 export default supplySlice.reducer;

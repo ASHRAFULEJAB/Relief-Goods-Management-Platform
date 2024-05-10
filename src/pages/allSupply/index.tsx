@@ -1,16 +1,10 @@
-import { useAppSelector } from "@/redux/hooks";
-import AllSuppliesCard from "./AllSuppliesCard";
 import { useGetSuppliesQuery } from "@/redux/api/api";
+import AllSuppliesCard from "./AllSuppliesCard";
 
 const AllSupply = () => {
   // const { supplies } = useAppSelector((state) => state.supplies);
 
-  const {
-    data: supplies,
-    isLoading,
-    isError,
-    isSuccess,
-  } = useGetSuppliesQuery(undefined);
+  const { data: supplies, isLoading } = useGetSuppliesQuery(undefined);
   if (isLoading) {
     return <p>loading ...</p>;
   }
@@ -37,7 +31,8 @@ const AllSupply = () => {
                     <tr>
                       <th
                         scope="col"
-                        className="py-3.5 px-4 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        className="py-3.5 flex-1 px-4 text-sm font-normal text-left rtl:text-right
+                         text-gray-500 dark:text-gray-400"
                       >
                         <div className="flex items-center gap-x-3">
                           <span>Title</span>
@@ -46,7 +41,7 @@ const AllSupply = () => {
 
                       <th
                         scope="col"
-                        className="px-12 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        className="px-12 flex-1 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                       >
                         <button className="flex items-center gap-x-2">
                           <span>Category</span>
@@ -81,10 +76,33 @@ const AllSupply = () => {
 
                       <th
                         scope="col"
-                        className="px-4 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                        className="px-4 flex-1 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
                       >
                         <button className="flex items-center gap-x-2">
                           <span>Amount</span>
+
+                          <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            strokeWidth="2"
+                            stroke="currentColor"
+                            className="w-4 h-4"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M9.879 7.519c1.171-1.025 3.071-1.025 4.242 0 1.172 1.025 1.172 2.687 0 3.712-.203.179-.43.326-.67.442-.745.361-1.45.999-1.45 1.827v.75M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9 5.25h.008v.008H12v-.008z"
+                            />
+                          </svg>
+                        </button>
+                      </th>
+                      <th
+                        scope="col"
+                        className="px-4 flex-1 py-3.5 text-sm font-normal text-left rtl:text-right text-gray-500 dark:text-gray-400"
+                      >
+                        <button className="flex items-center gap-x-2">
+                          <span>Description</span>
 
                           <svg
                             xmlns="http://www.w3.org/2000/svg"

@@ -1,8 +1,70 @@
-const AllSuppliesCard = ({ title, amount, description, image, category }) => {
+import {
+  useDeleteSupplyMutation,
+  useUpdateSupplyMutation,
+} from "@/redux/api/api";
+import { useState } from "react";
+import EditSupplyModal from "./EditSupplyModal";
+
+type TSupplyProps = {
+  _id: string;
+  title: string;
+  amount: string;
+  description: string;
+  image: string;
+  category: string;
+};
+
+const AllSuppliesCard = ({
+  _id,
+  title,
+  amount,
+  description,
+  image,
+  category,
+}: TSupplyProps) => {
+  const [removeSupply] = useDeleteSupplyMutation();
+  const [updateSupply] = useUpdateSupplyMutation();
+  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  //   console.log(data);
+
+  const handleEdit = () => {
+    setIsEditModalOpen(true);
+  };
+
+  const handleEditModalClose = () => {
+    setIsEditModalOpen(false);
+  };
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const handleSaveEdit = (updatedSupply: any) => {
+    // Implement your logic to save the updated supply details
+    console.log("Updated supply:", updatedSupply);
+    const options = {
+      id: updatedSupply._id,
+      data: {
+        title: updatedSupply.title,
+        amount: updatedSupply.amount,
+        description: updatedSupply.description,
+        // category: updatedSupply.category, // Add category to the update data
+      },
+    };
+    updateSupply(options);
+  };
+
+  const handleDeleteSupply = () => {
+    // console.log(id);
+    // console.log(data);
+    const options = {
+      id: _id,
+    };
+    // console.log(options);
+    removeSupply(options);
+  };
+
   return (
     <>
       <tr>
-        <td className="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
+        <td className="px-4  flex-1 py-4 text-sm font-medium text-gray-700 whitespace-nowrap">
           <div className="inline-flex items-center gap-x-3">
             <div className="flex items-center gap-x-2">
               <img
@@ -19,27 +81,34 @@ const AllSuppliesCard = ({ title, amount, description, image, category }) => {
           </div>
         </td>
 
-        <td className="px-4 py-4 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
-          {amount}
-        </td>
-
-        <td className="px-4 py-4 text-sm whitespace-nowrap">
+        <td className="px-4 flex-1 py-4 text-sm whitespace-nowrap">
           <div className="flex items-center gap-x-2">
             <p className="px-3 py-1 text-xs text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60">
               {category}
             </p>
           </div>
         </td>
-        <td className="px-4 py-4 text-sm whitespace-nowrap">
+        <td className="px-4 py-4 flex-1 text-sm text-gray-500 dark:text-gray-300 whitespace-nowrap">
+          {amount}
+        </td>
+
+        <td className="px-4 py-4 flex-1 text-sm whitespace-nowrap">
           <div className="flex items-center gap-x-2">
-            <p className="px-3 py-1 text-xs text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60">
+            <p
+              className="px-3 py-1 text-xs text-indigo-500 rounded-full
+             dark:bg-gray-800 bg-indigo-100/60 text-wrap"
+            >
               {description}
             </p>
           </div>
         </td>
         <td className="px-4 py-4 text-sm whitespace-nowrap">
           <div className="flex items-center gap-x-6">
-            <button className="text-gray-500 transition-colors duration-200 dark:hover:text-red-500 dark:text-gray-300 hover:text-red-500 focus:outline-none">
+            <button
+              onClick={() => handleDeleteSupply()}
+              className=" transition-colors duration-200 
+             hover:text-red-500  text-red-500 focus:outline-none"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -56,7 +125,26 @@ const AllSuppliesCard = ({ title, amount, description, image, category }) => {
               </svg>
             </button>
 
-            <button className="text-gray-500 transition-colors duration-200 dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 focus:outline-none">
+            <button
+              onClick={handleEdit}
+              className="text-gray-500 transition-colors duration-200
+             dark:hover:text-yellow-500 dark:text-gray-300 hover:text-yellow-500 
+             focus:outline-none"
+            >
+              {isEditModalOpen && (
+                <EditSupplyModal
+                  supply={{
+                    _id,
+                    title,
+                    amount,
+                    description,
+                    image,
+                    category,
+                  }}
+                  onSave={handleSaveEdit}
+                  onClose={handleEditModalClose}
+                />
+              )}
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"

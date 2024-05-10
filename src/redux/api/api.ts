@@ -23,7 +23,33 @@ export const baseApi = createApi({
       },
       invalidatesTags: ["supplies"],
     }),
+    deleteSupply: builder.mutation({
+      query: (options) => {
+        console.log(options);
+        return {
+          url: `/supplies/${options?.id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: ["supplies"],
+    }),
+    updateSupply: builder.mutation({
+      query: (options) => {
+        console.log("inside base api", options);
+        return {
+          url: `/supplies/${options?.id}`,
+          method: "PUT",
+          body: options.data,
+        };
+      },
+      invalidatesTags: ["supplies"],
+    }),
   }),
 });
 
-export const { useGetSuppliesQuery, useAddSuppliesMutation } = baseApi;
+export const {
+  useGetSuppliesQuery,
+  useAddSuppliesMutation,
+  useDeleteSupplyMutation,
+  useUpdateSupplyMutation,
+} = baseApi;
