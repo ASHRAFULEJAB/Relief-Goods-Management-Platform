@@ -1,12 +1,22 @@
 import { useGetSuppliesQuery } from "@/redux/api/api";
 import AllSuppliesCard from "./AllSuppliesCard";
+import Loader from "@/components/Loader";
+
+export type TSupply = {
+  _id: string;
+  title: string;
+  amount: string;
+  description: string;
+  image: string;
+  category: string;
+};
 
 const AllSupply = () => {
   // const { supplies } = useAppSelector((state) => state.supplies);
 
   const { data: supplies, isLoading } = useGetSuppliesQuery(undefined);
   if (isLoading) {
-    return <p>loading ...</p>;
+    return <Loader />;
   }
 
   return (
@@ -127,7 +137,7 @@ const AllSupply = () => {
                     </tr>
                   </thead>
                   <tbody className="bg-white divide-y divide-gray-200 dark:divide-gray-700 dark:bg-gray-900">
-                    {supplies?.data?.map((supply) => (
+                    {supplies?.data?.map((supply: TSupply) => (
                       <AllSuppliesCard key={supply?._id} {...supply} />
                     ))}
                   </tbody>

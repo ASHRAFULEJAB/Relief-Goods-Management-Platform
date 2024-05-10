@@ -1,6 +1,7 @@
 import PieLayout from "@/components/pieChart/PieLayout";
 import { useGetSuppliesQuery } from "@/redux/api/api";
 import { Link } from "react-router-dom";
+import { TSupply } from "../allSupply";
 
 const HomePageDashboad = () => {
   const { data: supplies, isLoading } = useGetSuppliesQuery(undefined);
@@ -281,7 +282,7 @@ const HomePageDashboad = () => {
             </div>
             <div className="flow-root">
               <ul role="list" className="divide-y divide-gray-200">
-                {supplies?.data?.map((supply) => (
+                {supplies?.data?.map((supply: TSupply) => (
                   <li className="py-3 sm:py-4">
                     <div className="flex items-center space-x-4">
                       <div className="flex-shrink-0">
@@ -293,7 +294,7 @@ const HomePageDashboad = () => {
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-gray-900 truncate">
-                          {supply?.titile}
+                          {supply?.title}
                         </p>
                         <p className="text-sm text-gray-500 truncate">
                           <Link

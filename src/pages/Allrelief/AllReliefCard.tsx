@@ -1,13 +1,14 @@
 import { Link } from "react-router-dom";
 
 type TRelief = {
+  _id: string;
   image: string;
   title: string;
   category: string;
   amount: string;
 };
 
-const AllReliefCard = ({ _id, image, titile, category, amount }) => {
+const AllReliefCard = ({ _id, image, title, category, amount }: TRelief) => {
   //   console.log(relief);
   //   const { image, titile, category, amount } = relief;
   return (
@@ -30,7 +31,7 @@ const AllReliefCard = ({ _id, image, titile, category, amount }) => {
         </Link>
       </div>
       <div className="p-6 text-surface dark:text-white">
-        <h5 className="mb-2 text-xl font-medium leading-tight ">{titile}</h5>
+        <h5 className="mb-2 text-xl font-medium leading-tight ">{title}</h5>
         <p className="mb-4 text-base">
           <span className="font-semibold">Category:</span>
           {category}

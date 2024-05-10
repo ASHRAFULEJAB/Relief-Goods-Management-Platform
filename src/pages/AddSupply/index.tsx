@@ -12,8 +12,7 @@ const AddSupply = () => {
   // const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const [addSupply, { data, isLoading, isError, isSuccess }] =
-    useAddSuppliesMutation();
+  const [addSupply] = useAddSuppliesMutation();
   // console.log(data, isError, isLoading, isSuccess);
 
   const onSubmit = (e: FormEvent) => {

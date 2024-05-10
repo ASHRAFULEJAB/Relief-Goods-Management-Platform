@@ -1,20 +1,26 @@
 import { useGetSingleReliefQuery } from "@/redux/api/api";
+import { useState } from "react";
 import { useParams } from "react-router-dom";
+import SingleReliefModal from "./SingleReliefModal";
+import Loader from "@/components/Loader";
 
 const SingaleRelief = () => {
   const { id } = useParams();
-
   const { data, isLoading } = useGetSingleReliefQuery(id);
-  console.log(data);
+
+  const [showModal, setShowModal] = useState(false);
+
+  const handleDonate = () => {
+    // Show the confirmation modal
+    setShowModal(true);
+  };
 
   if (isLoading) {
-    return <p>loading ...</p>;
+    return <Loader />;
   }
   const { result } = data;
-
-  // Destructure individual fields from the result object
   const { image, title, category, amount } = result;
-  console.log(image, title, category, amount);
+  //   console.log(image, title, category, amount);
   return (
     <div>
       {/* <!-- component --> */}
@@ -42,8 +48,8 @@ const SingaleRelief = () => {
               <div className="w-full md:w-1/2 px-10">
                 <div className="mb-10">
                   <h1 className="font-bold uppercase text-2xl mb-5">
-                    {title}<br />
-                    
+                    {title}
+                    <br />
                   </h1>
                   <p className="text-sm">
                     {category}...{" "}
@@ -68,10 +74,19 @@ const SingaleRelief = () => {
                     </span>
                   </div>
                   <div className="inline-block align-bottom">
-                    <button className="bg-yellow-300 opacity-75 hover:opacity-100 
-                    text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold">
-                      <i className="mdi mdi-cart -ml-2 mr-2"></i> BUY NOW
+                    <button
+                      onClick={handleDonate}
+                      className="bg-yellow-300 opacity-75 hover:opacity-100 
+                    text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold"
+                    >
+                      <i className="mdi mdi-cart -ml-2 mr-2"></i> DONATE NOW
                     </button>
+                    <SingleReliefModal
+                      showModal={showModal}
+                      setShowModal={setShowModal}
+                      title={title}
+                      children={undefined}
+                    />
                   </div>
                 </div>
               </div>

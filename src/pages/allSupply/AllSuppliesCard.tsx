@@ -4,6 +4,7 @@ import {
 } from "@/redux/api/api";
 import { useState } from "react";
 import EditSupplyModal from "./EditSupplyModal";
+import DeleteConfirmationModal from "./DeleteConfirmationModal";
 
 type TSupplyProps = {
   _id: string;
@@ -25,6 +26,7 @@ const AllSuppliesCard = ({
   const [removeSupply] = useDeleteSupplyMutation();
   const [updateSupply] = useUpdateSupplyMutation();
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+  const [isConfirmationModalOpen, setIsConfirmationModalOpen] = useState(false);
   //   console.log(data);
 
   const handleEdit = () => {
@@ -110,7 +112,8 @@ const AllSuppliesCard = ({
         <td className="px-4 py-4 text-sm whitespace-nowrap">
           <div className="flex items-center gap-x-6">
             <button
-              onClick={() => handleDeleteSupply()}
+              //   onClick={() => handleDeleteSupply()}
+              onClick={() => setIsConfirmationModalOpen(true)}
               className=" transition-colors duration-200 
              hover:text-red-500  text-red-500 focus:outline-none"
             >
@@ -129,6 +132,11 @@ const AllSuppliesCard = ({
                 />
               </svg>
             </button>
+            <DeleteConfirmationModal
+              isOpen={isConfirmationModalOpen}
+              onClose={() => setIsConfirmationModalOpen(false)}
+              onConfirm={handleDeleteSupply}
+            />
 
             <button
               onClick={handleEdit}

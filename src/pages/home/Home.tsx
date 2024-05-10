@@ -1,18 +1,26 @@
+import Loader from "@/components/Loader";
 import Testimonial from "@/components/Testimonial";
+import { useGetReliefsQuery } from "@/redux/api/api";
+import { Link } from "react-router-dom";
 import Aboutus from "../Aboutus";
-import AllRelief from "../Allrelief/AllRelief";
+import AllReliefCard from "../Allrelief/AllReliefCard";
 import DistributionCenterLocation from "../DistributionCenterLocation";
 import Banner from "./Banner";
 import Carousal from "./Carousal";
-import { Link } from "react-router-dom";
-import AllReliefCard from "../Allrelief/AllReliefCard";
-import { useGetReliefsQuery } from "@/redux/api/api";
+
+export type TRelief = {
+  _id: string;
+  image: string;
+  title: string;
+  category: string;
+  amount: string;
+};
 
 const Home = () => {
   const { data: reliefs, isLoading } = useGetReliefsQuery(undefined);
 
   if (isLoading) {
-    return <p>Loading...</p>;
+    return <Loader />;
   }
 
   // Slice the first three relief items
@@ -23,7 +31,7 @@ const Home = () => {
 
       <div className="relative">
         <div className="grid lg:grid-cols-3 grid-cols-1 gap-3 overflow-y-hidden ">
-          {limitedReliefs.map((relief) => (
+          {limitedReliefs.map((relief: TRelief) => (
             <AllReliefCard key={relief?._id} {...relief} />
           ))}
         </div>
