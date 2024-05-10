@@ -1,5 +1,6 @@
 import { useAddSuppliesMutation } from "@/redux/api/api";
 import { FormEvent, useState } from "react";
+import { useNavigate } from "react-router";
 
 const AddSupply = () => {
   const [title, setTitle] = useState("");
@@ -9,10 +10,11 @@ const AddSupply = () => {
   const [image, setImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   // const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const [addSupply, { data, isLoading, isError, isSuccess }] =
     useAddSuppliesMutation();
-  console.log(data, isError, isLoading, isSuccess);
+  // console.log(data, isError, isLoading, isSuccess);
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
@@ -27,6 +29,7 @@ const AddSupply = () => {
     };
     // dispatch(addSupply(supplyDetails));
     addSupply(supplyDetails);
+    navigate("/dashboard/supplies");
   };
 
   const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {

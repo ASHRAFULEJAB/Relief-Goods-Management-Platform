@@ -3,6 +3,7 @@ import Login from "@/components/Login";
 import Register from "@/components/Register";
 import AddSupply from "@/pages/AddSupply";
 import AllRelief from "@/pages/Allrelief/AllRelief";
+import SingaleRelief from "@/pages/Allrelief/SingaleRelief";
 import AllSupply from "@/pages/allSupply";
 import DashboardLayout from "@/pages/dashboard/DashboardLayout";
 import HomePageDashboad from "@/pages/dashboard/HomePageDashboad";
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
       {
         path: "relief-goods",
         element: <AllRelief />,
+      },
+      {
+        path: "relief-goods/:id",
+        element: <SingaleRelief/>,
       },
     ],
   },

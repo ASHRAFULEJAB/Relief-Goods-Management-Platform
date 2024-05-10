@@ -68,7 +68,7 @@ const AllSuppliesCard = ({
           <div className="inline-flex items-center gap-x-3">
             <div className="flex items-center gap-x-2">
               <img
-                className="object-cover w-10 h-10 rounded-full"
+                className="object-cover w-16 h-10 rounded"
                 src={image}
                 alt=""
               />
@@ -83,7 +83,10 @@ const AllSuppliesCard = ({
 
         <td className="px-4 flex-1 py-4 text-sm whitespace-nowrap">
           <div className="flex items-center gap-x-2">
-            <p className="px-3 py-1 text-xs text-indigo-500 rounded-full dark:bg-gray-800 bg-indigo-100/60">
+            <p
+              className="px-3 py-1 text-xs text-indigo-500 rounded-full
+             dark:bg-gray-800 bg-indigo-100/60 ml-8"
+            >
               {category}
             </p>
           </div>
@@ -92,16 +95,18 @@ const AllSuppliesCard = ({
           {amount}
         </td>
 
-        <td className="px-4 py-4 flex-1 text-sm whitespace-nowrap">
+        <td className="px-4 py-4 flex-1 text-sm whitespace-wrap">
           <div className="flex items-center gap-x-2">
             <p
               className="px-3 py-1 text-xs text-indigo-500 rounded-full
-             dark:bg-gray-800 bg-indigo-100/60 text-wrap"
+      dark:bg-gray-800 bg-indigo-100/60 overflow-hidden overflow-ellipsis
+      max-h-16" // Adjust the max height as needed
             >
               {description}
             </p>
           </div>
         </td>
+
         <td className="px-4 py-4 text-sm whitespace-nowrap">
           <div className="flex items-center gap-x-6">
             <button

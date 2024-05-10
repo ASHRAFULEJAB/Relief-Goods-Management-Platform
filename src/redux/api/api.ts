@@ -3,7 +3,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000" }),
-  tagTypes: ["supplies"],
+  tagTypes: ["supplies", "reliefs"],
   endpoints: (builder) => ({
     getSupplies: builder.query({
       query: () => ({
@@ -44,11 +44,30 @@ export const baseApi = createApi({
       },
       invalidatesTags: ["supplies"],
     }),
+    getReliefs: builder.query({
+      query: () => ({
+        url: "/relief-goods",
+        method: "GET",
+      }),
+      providesTags: ["reliefs"],
+    }),
+    getSingleRelief: builder.query({
+      query: (id) => {
+        console.log(id);
+        return {
+          url: `/relief-goods/${id}`,
+          method: "GET",
+        };
+      },
+      providesTags: ["reliefs"],
+    }),
   }),
 });
 
 export const {
   useGetSuppliesQuery,
+  useGetReliefsQuery,
+  useGetSingleReliefQuery,
   useAddSuppliesMutation,
   useDeleteSupplyMutation,
   useUpdateSupplyMutation,

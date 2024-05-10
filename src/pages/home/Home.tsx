@@ -5,14 +5,28 @@ import DistributionCenterLocation from "../DistributionCenterLocation";
 import Banner from "./Banner";
 import Carousal from "./Carousal";
 import { Link } from "react-router-dom";
+import AllReliefCard from "../Allrelief/AllReliefCard";
+import { useGetReliefsQuery } from "@/redux/api/api";
 
 const Home = () => {
+  const { data: reliefs, isLoading } = useGetReliefsQuery(undefined);
+
+  if (isLoading) {
+    return <p>Loading...</p>;
+  }
+
+  // Slice the first three relief items
+  const limitedReliefs = reliefs?.data?.slice(0, 3);
   return (
     <div>
       <Banner />
 
       <div className="relative">
-        <AllRelief />
+        <div className="grid lg:grid-cols-3 grid-cols-1 gap-3 overflow-y-hidden ">
+          {limitedReliefs.map((relief) => (
+            <AllReliefCard key={relief?._id} {...relief} />
+          ))}
+        </div>
         <Link to="relief-goods">
           <button
             className="absolute flex items-center justify-center top-0 right-0 mt-4 
