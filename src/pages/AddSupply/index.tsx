@@ -98,10 +98,10 @@ const AddSupply = () => {
               
                focus:border-blue-500 focus:outline-none focus:ring"
               >
-                <option>Surabaya</option>
-                <option>Jakarta</option>
-                <option>Tangerang</option>
-                <option>Bandung</option>
+                <option>Medical</option>
+                <option>Clothes</option>
+                <option>Food</option>
+                <option>Shelter</option>
               </select>
             </div>
 

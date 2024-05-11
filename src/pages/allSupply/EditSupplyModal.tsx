@@ -1,7 +1,21 @@
 import { useUpdateSupplyMutation } from "@/redux/api/api";
 import { FormEvent, useState } from "react";
+interface Supply {
+  _id: string;
+  title: string;
+  amount: string;
+  description: string;
+  image: string;
+  category: string;
+}
 
-const EditSupplyModal = ({ supply, onSave, onClose }) => {
+interface EditSupplyModalProps {
+  supply: Supply;
+  onSave: (updatedSupply: Supply) => void;
+  onClose: () => void;
+}
+
+const EditSupplyModal = ({ supply, onSave, onClose }: EditSupplyModalProps) => {
   const [updateSupply] = useUpdateSupplyMutation();
 
   const [editedTitle, setEditedTitle] = useState(supply.title);

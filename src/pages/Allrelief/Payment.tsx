@@ -1,21 +1,25 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
 
-const PaymentForm = ({ onConfirm }) => {
+interface PaymentFormProps {
+  onConfirm: () => void; // Define the type of 'onConfirm' parameter
+}
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const PaymentForm = ({ onConfirm }: PaymentFormProps) => {
   const [cardholder, setCardholder] = useState("");
   const [cardNumber, setCardNumber] = useState("");
   const [expirationMonth, setExpirationMonth] = useState("");
   const [expirationYear, setExpirationYear] = useState("");
   const [securityCode, setSecurityCode] = useState("");
-  const navigate = useNavigate();
 
-  const formatCardNumber = (value) => {
+  const formatCardNumber = (value: string) => {
+    if (!value) {
+      return ""; // Handle the case where value is undefined or empty
+    }
     if (value.length > 18) {
-      return;
+      return "";
     }
     return value.replace(/\W/gi, "").replace(/(.{4})/g, "$1 ");
   };
-
   const isValid = () => {
     if (cardholder.length < 5) {
       return false;
@@ -32,14 +36,7 @@ const PaymentForm = ({ onConfirm }) => {
     return true;
   };
 
-  const onSubmit = () => {
-    if (isValid()) {
-      alert(`You did it ${cardholder}.`);
-      navigate("/dashboard");
-    } else {
-      alert("Please fill in all required fields correctly.");
-    }
-  };
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
 
   return (
     <div className="m-4 ">
@@ -99,7 +96,7 @@ const PaymentForm = ({ onConfirm }) => {
                 type="text"
                 className="block w-full px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
                 placeholder="Card holder"
-                maxLength="22"
+                // maxLength="22"
                 value={cardholder}
                 onChange={(e) => setCardholder(e.target.value)}
               />
@@ -113,7 +110,7 @@ const PaymentForm = ({ onConfirm }) => {
                 onChange={(e) =>
                   setCardNumber(formatCardNumber(e.target.value))
                 }
-                maxLength="19"
+                // maxLength="19"
               />
             </div>
             <div className="my-3 flex flex-col">
@@ -159,7 +156,7 @@ const PaymentForm = ({ onConfirm }) => {
                   type="text"
                   className="block w-full col-span-2 px-5 py-2 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
                   placeholder="Security code"
-                  maxLength="3"
+                  // maxLength="3"
                   value={securityCode}
                   onChange={(e) => setSecurityCode(e.target.value)}
                 />

@@ -5,6 +5,7 @@ import { TRelief } from "../home/Home";
 
 const AllRelief = () => {
   const { data: reliefs, isLoading } = useGetReliefsQuery(undefined);
+  console.log(reliefs);
   if (isLoading) {
     return <Loader />;
   }

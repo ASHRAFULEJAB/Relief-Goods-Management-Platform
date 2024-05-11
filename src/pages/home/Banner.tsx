@@ -11,8 +11,8 @@ const Banner = () => {
           <div className="flex items-center justify-center w-full h-full ">
             <div className="text-center">
               <h1 className="text-3xl font-semibold text-white lg:text-4xl">
-                Build your new <span className="text-blue-400">Saas</span>{" "}
-                Project
+                Doante Now <span className="text-blue-400">For</span> Needy
+                People
               </h1>
               <button
                 className="w-full px-5 py-2 mt-4 text-sm font-medium text-white 

@@ -7,6 +7,7 @@ import AllReliefCard from "../Allrelief/AllReliefCard";
 import DistributionCenterLocation from "../DistributionCenterLocation";
 import Banner from "./Banner";
 import Carousal from "./Carousal";
+import { useEffect, useState } from "react";
 
 export type TRelief = {
   _id: string;
@@ -19,8 +20,22 @@ export type TRelief = {
 const Home = () => {
   const { data: reliefs, isLoading } = useGetReliefsQuery(undefined);
 
-  if (isLoading) {
-    return <Loader />;
+  const [initialLoading, setInitialLoading] = useState(true); // State to manage initial loading
+
+  // Show the initial loader until the data is fetched
+  useEffect(() => {
+    if (!isLoading) {
+      setInitialLoading(false);
+    }
+  }, [isLoading]);
+
+  if (initialLoading) {
+    return (
+      <>
+        <p className="text-red-500">Loading ....</p>
+        <Loader />
+      </>
+    );
   }
 
   // Slice the first three relief items
@@ -31,7 +46,7 @@ const Home = () => {
 
       <div className="relative">
         <div className="grid lg:grid-cols-3 grid-cols-1 gap-3 overflow-y-hidden ">
-          {limitedReliefs.map((relief: TRelief) => (
+          {limitedReliefs?.map((relief: TRelief) => (
             <AllReliefCard key={relief?._id} {...relief} />
           ))}
         </div>

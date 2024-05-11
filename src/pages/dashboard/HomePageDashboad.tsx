@@ -317,17 +317,17 @@ const HomePageDashboad = () => {
           </div>
           <div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8 ">
             <h3 className="text-xl leading-none font-bold text-gray-900 mb-10">
-              Acquisition Overview
+              Donares All Over the World
             </h3>
             <div className="block w-full overflow-x-auto">
               <table className="items-center w-full bg-transparent border-collapse">
                 <thead>
                   <tr>
                     <th className="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
-                      Top Channels
+                      Top Country
                     </th>
                     <th className="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
-                      Users
+                     USA
                     </th>
                     <th className="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px"></th>
                   </tr>
@@ -335,7 +335,7 @@ const HomePageDashboad = () => {
                 <tbody className="divide-y divide-gray-100">
                   <tr className="text-gray-500">
                     <th className="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">
-                      Organic Search
+                      NEW YORK
                     </th>
                     <td className="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">
                       5,649
@@ -356,7 +356,7 @@ const HomePageDashboad = () => {
                   </tr>
                   <tr className="text-gray-500">
                     <th className="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">
-                      Referral
+                      AUSTRIA
                     </th>
                     <td className="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">
                       4,025
@@ -377,7 +377,7 @@ const HomePageDashboad = () => {
                   </tr>
                   <tr className="text-gray-500">
                     <th className="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">
-                      Direct
+                      CIRY
                     </th>
                     <td className="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">
                       3,105
@@ -398,7 +398,7 @@ const HomePageDashboad = () => {
                   </tr>
                   <tr className="text-gray-500">
                     <th className="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">
-                      Social
+                      CANDA
                     </th>
                     <td className="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">
                       1251
@@ -419,7 +419,7 @@ const HomePageDashboad = () => {
                   </tr>
                   <tr className="text-gray-500">
                     <th className="border-t-0 px-4 align-middle text-sm font-normal whitespace-nowrap p-4 text-left">
-                      Other
+                      TORANTO
                     </th>
                     <td className="border-t-0 px-4 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4">
                       734
@@ -440,7 +440,7 @@ const HomePageDashboad = () => {
                   </tr>
                   <tr className="text-gray-500">
                     <th className="border-t-0 align-middle text-sm font-normal whitespace-nowrap p-4 pb-0 text-left">
-                      Email
+                      GERMANY
                     </th>
                     <td className="border-t-0 align-middle text-xs font-medium text-gray-900 whitespace-nowrap p-4 pb-0">
                       456

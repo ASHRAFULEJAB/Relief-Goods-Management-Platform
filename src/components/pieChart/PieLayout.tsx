@@ -4,32 +4,32 @@ type TPieProsp = { id: string; label: string; value: number; color: string };
 const PieLayout = () => {
   const data: TPieProsp[] = [
     {
-      id: "c",
-      label: "c",
+      id: "medical",
+      label: "medical",
       value: 162,
       color: "hsl(292, 70%, 50%)",
     },
     {
-      id: "sass",
-      label: "sass",
+      id: "food",
+      label: "food",
       value: 116,
       color: "hsl(227, 70%, 50%)",
     },
     {
-      id: "php",
-      label: "php",
+      id: "pharmancy",
+      label: "pharmancy",
       value: 358,
       color: "hsl(76, 70%, 50%)",
     },
     {
-      id: "elixir",
-      label: "elixir",
+      id: "shelter",
+      label: "shelter",
       value: 182,
       color: "hsl(258, 70%, 50%)",
     },
     {
-      id: "make",
-      label: "make",
+      id: "medicals",
+      label: "medicals",
       value: 313,
       color: "hsl(300, 70%, 50%)",
     },

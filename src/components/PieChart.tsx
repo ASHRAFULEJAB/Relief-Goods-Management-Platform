@@ -1,7 +1,15 @@
 import { ResponsivePie } from "@nivo/pie";
 
+interface PieChartDataItem {
+  id: string;
+  value: number;
+}
+
+interface PieChartProps {
+  data: PieChartDataItem[];
+}
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const PieChart = ({ data }) => {
+const PieChart = ({ data }: PieChartProps) => {
   return (
     <div style={{ width: "500px", height: "500px" }}>
       <ResponsivePie

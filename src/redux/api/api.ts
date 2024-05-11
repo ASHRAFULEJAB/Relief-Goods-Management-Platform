@@ -2,7 +2,11 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
 export const baseApi = createApi({
   reducerPath: "baseApi",
-  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:5000" }),
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://assignment-6-backend-relief-goods.vercel.app",
+
+    // http://localhost:5000
+  }),
   tagTypes: ["supplies", "reliefs"],
   endpoints: (builder) => ({
     getSupplies: builder.query({
@@ -47,7 +51,6 @@ export const baseApi = createApi({
     getReliefs: builder.query({
       query: () => ({
         url: "/relief-goods",
-        method: "GET",
       }),
       providesTags: ["reliefs"],
     }),

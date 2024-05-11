@@ -15,6 +15,7 @@ const AllSupply = () => {
   // const { supplies } = useAppSelector((state) => state.supplies);
 
   const { data: supplies, isLoading } = useGetSuppliesQuery(undefined);
+  console.log(supplies);
   if (isLoading) {
     return <Loader />;
   }

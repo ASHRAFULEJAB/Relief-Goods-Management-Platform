@@ -1,13 +1,18 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import { useNavigate } from "react-router";
 import PaymentForm from "./Payment";
+interface SingleReliefModalProps {
+  showModal: boolean;
+  setShowModal: (showModal: boolean) => void;
+  title: string; // Define the type of 'title' as string
+  children?: React.ReactNode;
+}
 
 const SingleReliefModal = ({
   showModal,
   setShowModal,
   title,
-  children,
-}) => {
+}: SingleReliefModalProps) => {
   const navigate = useNavigate();
   const handleConfirmDonate = () => {
     navigate("/dashboard");
