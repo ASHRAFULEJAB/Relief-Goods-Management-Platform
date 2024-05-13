@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 
 const Register = () => {
   return (
-    <div className="">
-      <section className="h-full bg-[#303030]">
-        <div className="container h-full px-6 py-10">
+   
+      <section className="h-full bg-[#303030] ">
+        <div className="container h-full lg:px-6 lg:py-10 w-full">
           <div className="flex h-full flex-wrap items-center justify-center lg:justify-between">
             {/* <!-- Left column container with background--> */}
             <div className="mb-12 md:mb-0 md:w-8/12 lg:w-6/12">
@@ -20,7 +20,7 @@ const Register = () => {
 
             {/* <!-- Right column container with form --> */}
             <div className="md:w-8/12 lg:ms-6 lg:w-5/12">
-              <div className="flex items-center w-full max-w-3xl  mx-auto ">
+              <div className="flex items-center w-full lg:max-w-3xl  mx-auto ">
                 <div className="w-full">
                   <h1 className="text-2xl font-semibold tracking-wider  capitalize text-white">
                     Get your free account now.
@@ -238,7 +238,7 @@ const Register = () => {
           </div>
         </div>
       </section>
-    </div>
+   
   );
 };
 

@@ -100,7 +100,7 @@ const AllSuppliesCard = ({
         <td className="px-4 py-4 flex-1 text-sm whitespace-wrap">
           <div className="flex items-center gap-x-2">
             <p
-              className="px-3 py-1 text-xs text-indigo-500 rounded-full
+              className="px-3 py-1 text-xs text-indigo-500 rounded
       dark:bg-gray-800 bg-indigo-100/60 overflow-hidden overflow-ellipsis
       max-h-16" // Adjust the max height as needed
             >

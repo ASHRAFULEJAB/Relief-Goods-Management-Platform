@@ -1,4 +1,5 @@
 import { ResponsivePie } from "@nivo/pie";
+import { useEffect, useState } from "react";
 
 interface PieChartDataItem {
   id: string;
@@ -8,10 +9,30 @@ interface PieChartDataItem {
 interface PieChartProps {
   data: PieChartDataItem[];
 }
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+
 const PieChart = ({ data }: PieChartProps) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [, setDimensions] = useState({ width: 0, height: 0 });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setDimensions({
+        width: window.innerWidth > 500 ? 500 : window.innerWidth,
+        height: window.innerWidth > 500 ? 500 : window.innerWidth,
+      });
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   return (
-    <div style={{ width: "500px", height: "500px" }}>
+    <div style={{ width: "100%", height: "500px" }}>
       <ResponsivePie
         data={data}
         margin={{ top: 40, right: 80, bottom: 80, left: 80 }}
@@ -59,56 +80,15 @@ const PieChart = ({ data }: PieChartProps) => {
             },
             id: "dots",
           },
-          {
-            match: {
-              id: "c",
-            },
-            id: "dots",
-          },
-          {
-            match: {
-              id: "go",
-            },
-            id: "dots",
-          },
-          {
-            match: {
-              id: "python",
-            },
-            id: "dots",
-          },
-          {
-            match: {
-              id: "scala",
-            },
-            id: "lines",
-          },
-          {
-            match: {
-              id: "lisp",
-            },
-            id: "lines",
-          },
-          {
-            match: {
-              id: "elixir",
-            },
-            id: "lines",
-          },
-          {
-            match: {
-              id: "javascript",
-            },
-            id: "lines",
-          },
+          // Add more fill configurations as needed
         ]}
         legends={[
           {
             anchor: "right",
             direction: "column",
             justify: false,
-            translateX: 128,
-            translateY: 90,
+            translateX: 88,
+            translateY: 110,
             itemsSpacing: 7,
             itemWidth: 100,
             itemHeight: 18,

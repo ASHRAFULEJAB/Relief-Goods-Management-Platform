@@ -10,7 +10,7 @@ const Login = () => {
            text-neutral-200"
           >
             <div className="w-full h-screen">
-              <div className="  bg-neutral-800 ">
+              <div className="  bg-neutral-800 h-full ">
                 <div className=" h-screen lg:flex lg:flex-wrap">
                   {/* <!-- Left column container with background and description--> */}
                   <div
@@ -21,20 +21,20 @@ const Login = () => {
                     }}
                   >
                     <div className="px-4 py-6 text-white md:mx-6 md:p-12">
-                      <h4 className="mb-6 text-xl font-semibold">
-                        We are more than just a company
+                      <h4 className="mb-6 text-xl font-semibold text-center lg:ml-16">
+                        Your Small Help can change someone's life!
                       </h4>
-                      <p className="text-sm">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit, sed do eiusmod tempor incididunt ut labore et
-                        dolore magna aliqua. Ut enim ad minim veniam, quis
-                        nostrud exercitation ullamco laboris nisi ut aliquip ex
-                        ea commodo consequat.
-                      </p>
+                      <div className="flex items-center justify-center h-full">
+                        <img
+                          className="h-4/5 max-w-full lg:ml-20"
+                          src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZG9uYXRpb258ZW58MHx8MHx8fDA%3D"
+                          alt="relief"
+                        />
+                      </div>
                     </div>
                   </div>
                   {/* <!-- Right column container--> */}
-                  <div className="px-4 md:px-0 lg:w-5/12 ">
+                  <div className="px-4 md:px-0 lg:w-5/12 bg-neutral-800">
                     <div className="md:mx-6 md:p-12">
                       {/* <!--Logo--> */}
                       <div className="text-center">

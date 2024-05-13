@@ -25,10 +25,18 @@ const SingaleRelief = () => {
     <div>
       {/* <!-- component --> */}
       {/* <style>@import url(https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/5.3.45/css/materialdesignicons.min.css);</style> */}
-      <div className="min-w-screen min-h-screen bg-[#E37423] 
-      flex items-center p-5 lg:p-10 overflow-hidden relative">
-        <div className="w-full max-w-6xl rounded bg-white shadow-xl p-10 lg:p-20 mx-auto
-         text-gray-800 relative md:text-left">
+      <div
+        className="min-w-screen min-h-screen bg-[#E37423] 
+      flex items-center p-5 lg:p-10 overflow-hidden relative"
+        style={{
+          background:
+            "linear-gradient(to right, #074495, #074495, #0F4C99, #658BBB)",
+        }}
+      >
+        <div
+          className="w-full max-w-6xl rounded bg-white shadow-xl p-10 lg:p-20 mx-auto
+         text-gray-800 relative md:text-left"
+        >
           {
             /* {relief?.data?.map((itemrelief) =>
             console.log(itemrelief.result.titile)
@@ -78,8 +86,8 @@ const SingaleRelief = () => {
                   <div className="inline-block align-bottom">
                     <button
                       onClick={handleDonate}
-                      className="bg-[#E37423] opacity-75 hover:opacity-100 
-                    text-yellow-900 hover:text-gray-900 rounded-full px-10 py-2 font-semibold"
+                      className="bg-[#E37423]  
+                    text-white rounded-full px-10 py-2 font-semibold"
                     >
                       <i className="mdi mdi-cart -ml-2 mr-2"></i> DONATE NOW
                     </button>
