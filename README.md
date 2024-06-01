@@ -1,7 +1,7 @@
 - Live Link:: https://relief-fund-management.netlify.app/
 
 # Relief Goods Management Platform
-#### Project Overview
+## Project Overview
 
 The Distribution of Relief Goods Management Platform is designed to facilitate the coordination and management of relief goods distribution in post-disaster scenarios. Using modern web technologies, this platform aims to ensure timely and effective delivery of relief goods to affected communities.
 
@@ -32,7 +32,7 @@ npm run dev
 ```sh
 rm -rf .git
 ```
-#### Configuration
+## Configuration
 ### Environment Variables
 * PORT: Port number the server listens on. Default: 3000
 * MONGODB_URI: URI for MongoDB database.
