@@ -52,7 +52,9 @@ const Login = () => {
                       </div>
 
                       <form>
-                        <p className="mb-4">Please login to your account</p>
+                        <p className="mb-4 text-white">
+                          Please login to your account
+                        </p>
                         {/* <!--Username input--> */}
                         <div
                           className="relative mb-4"
@@ -135,8 +137,12 @@ const Login = () => {
                         </div>
 
                         {/* <!--Register button--> */}
-                        <div className="flex items-center justify-between pb-6">
-                          <p className="mb-0 me-2">Don't have an account?</p>
+                        <div className="flex items-center justify-between pb-6 ">
+                          <Link to="/register">
+                            <p className="mb-0 me-2 text-blue-400">
+                              Don't have an account?
+                            </p>
+                          </Link>
                           <Link to="/register">
                             <button
                               type="button"
@@ -148,12 +154,24 @@ const Login = () => {
                                 "
                               data-twe-ripple-init
                               data-twe-ripple-color="light"
+                              style={{
+                                background:
+                                  "linear-gradient(to right, #0F4C99, #074495, #074495,#658BBB)",
+                              }}
                             >
                               Sign up
                             </button>
                           </Link>
                         </div>
                       </form>
+                      <div className=" items-center">
+                        <p className="text-white">
+                          Example User :: example@gmail.com{" "}
+                        </p>
+                        <p className="text-white">
+                          example User Password:: example123
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>

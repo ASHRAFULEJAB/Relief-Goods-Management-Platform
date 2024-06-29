@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 type TSupply = {
@@ -15,7 +16,7 @@ const initialState: TInitailState = {
   supplies: [],
 };
 
-const supplySlice = createSlice({
+const supplySlice:any = createSlice({
   name: "supply",
   initialState,
   reducers: {

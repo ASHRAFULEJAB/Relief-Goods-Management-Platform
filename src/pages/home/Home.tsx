@@ -8,6 +8,7 @@ import DistributionCenterLocation from "../DistributionCenterLocation";
 import Banner from "./Banner";
 import Carousal from "./Carousal";
 import { useEffect, useState } from "react";
+import CommunityGratitudeWall from "./CommunityGratitudeWall";
 
 export type TRelief = {
   _id: string;
@@ -77,6 +78,7 @@ const Home = () => {
       <Carousal />
       <Aboutus />
       <DistributionCenterLocation />
+      <CommunityGratitudeWall />
     </div>
   );
 };
