@@ -1,4 +1,5 @@
-import { useGetSuppliesQuery } from "@/redux/api/api";
+// import { useGetSuppliesQuery } from "@/redux/api/baseApi";
+import { useGetSuppliesQuery } from "@/redux/features/supply/supplyApi";
 import AllSuppliesCard from "./AllSuppliesCard";
 import Loader from "@/components/Loader";
 

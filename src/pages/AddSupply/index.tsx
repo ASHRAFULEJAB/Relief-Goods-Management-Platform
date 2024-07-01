@@ -1,4 +1,4 @@
-import { useAddSuppliesMutation } from "@/redux/api/api";
+import { useAddSuppliesMutation } from "@/redux/features/supply/supplyApi";
 import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router";
 

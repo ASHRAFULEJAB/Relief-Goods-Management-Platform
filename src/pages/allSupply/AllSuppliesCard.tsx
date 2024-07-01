@@ -1,10 +1,10 @@
-import {
-  useDeleteSupplyMutation,
-  useUpdateSupplyMutation,
-} from "@/redux/api/api";
 import { useState } from "react";
 import EditSupplyModal from "./EditSupplyModal";
 import DeleteConfirmationModal from "./DeleteConfirmationModal";
+import {
+  useDeleteSupplyMutation,
+  useUpdateSupplyMutation,
+} from "@/redux/features/supply/supplyApi";
 
 type TSupplyProps = {
   _id: string;

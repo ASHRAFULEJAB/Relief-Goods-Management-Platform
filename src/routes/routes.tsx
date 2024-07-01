@@ -10,6 +10,7 @@ import HomePageDashboad from "@/pages/dashboard/HomePageDashboad";
 import Home from "@/pages/home/Home";
 
 import { createBrowserRouter } from "react-router-dom";
+import ProtectedRoute from "./protectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
       },
       {
         path: "relief-goods/:id",
-        element: <SingaleRelief/>,
+        element: <SingaleRelief />,
       },
     ],
   },
@@ -45,7 +46,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard",
-        element: <HomePageDashboad />,
+        element: (
+          <>
+            <HomePageDashboad />
+          </>
+        ),
       },
       {
         path: "/dashboard/supplies",

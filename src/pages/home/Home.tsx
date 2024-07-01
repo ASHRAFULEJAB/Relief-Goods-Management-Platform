@@ -1,6 +1,6 @@
 import Loader from "@/components/Loader";
 import Testimonial from "@/components/Testimonial";
-import { useGetReliefsQuery } from "@/redux/api/api";
+
 import { Link } from "react-router-dom";
 import Aboutus from "../Aboutus";
 import AllReliefCard from "../Allrelief/AllReliefCard";
@@ -9,6 +9,8 @@ import Banner from "./Banner";
 import Carousal from "./Carousal";
 import { useEffect, useState } from "react";
 import CommunityGratitudeWall from "./CommunityGratitudeWall";
+import { useGetReliefsQuery } from "@/redux/features/supply/supplyApi";
+// import { useGetReliefsQuery } from "@/redux/api/baseApi";
 
 export type TRelief = {
   _id: string;

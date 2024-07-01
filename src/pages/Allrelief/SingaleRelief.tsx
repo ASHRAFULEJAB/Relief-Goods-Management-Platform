@@ -1,8 +1,9 @@
-import { useGetSingleReliefQuery } from "@/redux/api/api";
 import { useState } from "react";
 import { useParams } from "react-router-dom";
 import SingleReliefModal from "./SingleReliefModal";
 import Loader from "@/components/Loader";
+import { useGetSingleReliefQuery } from "@/redux/features/supply/supplyApi";
+
 
 const SingaleRelief = () => {
   const { id } = useParams();

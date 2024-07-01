@@ -1,7 +1,9 @@
 import PieLayout from "@/components/pieChart/PieLayout";
-import { useGetSuppliesQuery } from "@/redux/api/api";
+
 import { Link } from "react-router-dom";
 import { TSupply } from "../allSupply";
+import { useGetSuppliesQuery } from "@/redux/features/supply/supplyApi";
+// import { useGetSuppliesQuery } from "@/redux/api/baseApi";
 
 const HomePageDashboad = () => {
   const { data: supplies, isLoading } = useGetSuppliesQuery(undefined);
@@ -327,7 +329,7 @@ const HomePageDashboad = () => {
                       Top Country
                     </th>
                     <th className="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap">
-                     USA
+                      USA
                     </th>
                     <th className="px-4 bg-gray-50 text-gray-700 align-middle py-3 text-xs font-semibold text-left uppercase border-l-0 border-r-0 whitespace-nowrap min-w-140-px"></th>
                   </tr>

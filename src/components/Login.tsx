@@ -1,6 +1,33 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { verifyToken } from "@/lib/verifyToken";
+import { useLoginMutation } from "@/redux/features/auth/authApi";
+import { setUser } from "@/redux/features/auth/authSlice";
+
+import { useAppDispatch } from "@/redux/hooks";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 
 const Login = () => {
+  const [login] = useLoginMutation();
+  const dispatch = useAppDispatch();
+  const { register, handleSubmit } = useForm({
+    defaultValues: {
+      email: "example@gmail.com",
+      password: "example123",
+    },
+  });
+  const onSubmit = async (data: { email: string; password: string }) => {
+    const userInfo = {
+      email: data.email,
+      password: data.password,
+    };
+
+    const res = await login(userInfo).unwrap();
+    console.log(res);
+    const user = verifyToken(res.data.accesstoken);
+
+    dispatch(setUser({ user: user, token: res.data.accessToken }));
+  };
   return (
     <div>
       <section className="gradient-form h-full  ">
@@ -51,7 +78,7 @@ const Login = () => {
                         </h4>
                       </div>
 
-                      <form>
+                      <form onSubmit={handleSubmit(onSubmit)}>
                         <p className="mb-4 text-white">
                           Please login to your account
                         </p>
@@ -61,6 +88,7 @@ const Login = () => {
                           data-twe-input-wrapper-init
                         >
                           <input
+                            {...register("email")}
                             type="email"
                             className="peer block min-h-[auto] w-full rounded border-2
                              bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all 
@@ -94,6 +122,7 @@ const Login = () => {
                           data-twe-input-wrapper-init
                         >
                           <input
+                            {...register("password")}
                             type="password"
                             className="peer block min-h-[auto] w-full rounded border-2 *
                              bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none
@@ -121,7 +150,7 @@ const Login = () => {
                              duration-150 ease-in-out hover:shadow-dark-2 focus:shadow-dark-2 
                              focus:outline-none focus:ring-0 active:shadow-dark-2 shadow-black/30 
                              hover:shadow-dark-strong focus:shadow-dark-strong active:shadow-dark-strong"
-                            type="button"
+                            type="submit"
                             data-twe-ripple-init
                             data-twe-ripple-color="light"
                             style={{

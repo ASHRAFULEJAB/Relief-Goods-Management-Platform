@@ -11,12 +11,22 @@ type TSupply = {
 };
 type TInitailState = {
   supplies: TSupply[];
+  user?: null | object;
+  token?: null | string;
 };
 const initialState: TInitailState = {
   supplies: [],
 };
+// type TAuthState = {
+//
+// };
 
-const supplySlice:any = createSlice({
+// const initialState: TAuthState = {
+//   user: null,
+//   token: null,
+// };
+
+const supplySlice: any = createSlice({
   name: "supply",
   initialState,
   reducers: {
@@ -33,6 +43,11 @@ const supplySlice:any = createSlice({
       state.supplies = state.supplies.map((supply) =>
         supply.id === updatedSupply.id ? updatedSupply : supply
       );
+    },
+    setUser: (state, action) => {
+      const { user, token } = action.payload;
+      state.user = user;
+      state.token = token;
     },
   },
 });

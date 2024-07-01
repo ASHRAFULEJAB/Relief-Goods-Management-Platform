@@ -1,7 +1,7 @@
-import { useGetReliefsQuery } from "@/redux/api/api";
 import AllReliefCard from "./AllReliefCard";
 import Loader from "@/components/Loader";
 import { TRelief } from "../home/Home";
+import { useGetReliefsQuery } from "@/redux/features/supply/supplyApi";
 
 const AllRelief = () => {
   const { data: reliefs, isLoading } = useGetReliefsQuery(undefined);

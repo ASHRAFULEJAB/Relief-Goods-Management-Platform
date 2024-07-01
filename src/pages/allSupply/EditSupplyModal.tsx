@@ -1,4 +1,5 @@
-import { useUpdateSupplyMutation } from "@/redux/api/api";
+
+import { useUpdateSupplyMutation } from "@/redux/features/supply/supplyApi";
 import { FormEvent, useState } from "react";
 interface Supply {
   _id: string;
