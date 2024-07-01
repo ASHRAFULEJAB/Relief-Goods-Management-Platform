@@ -5,12 +5,16 @@ import AddSupply from "@/pages/AddSupply";
 import AllRelief from "@/pages/Allrelief/AllRelief";
 import SingaleRelief from "@/pages/Allrelief/SingaleRelief";
 import AllSupply from "@/pages/allSupply";
-import DashboardLayout from "@/pages/dashboard/DashboardLayout";
-import HomePageDashboad from "@/pages/dashboard/HomePageDashboad";
+import DashboardLayout from "@/pages/dashboard/admin/DashboardLayout";
+
+import HomePageDashboad from "@/pages/dashboard/admin/HomePageDashboad";
+import UserDashboard from "@/pages/dashboard/user/UserDashboard";
+import UserDashboardHomePage from "@/pages/dashboard/user/UserDashboardHomePage";
+import UserDashboardLayout from "@/pages/dashboard/user/UserDashboardLayout";
+import UserProfile from "@/pages/dashboard/user/UserProfile";
 import Home from "@/pages/home/Home";
 
 import { createBrowserRouter } from "react-router-dom";
-import ProtectedRoute from "./protectedRoute";
 
 const router = createBrowserRouter([
   {
@@ -42,19 +46,24 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: <UserDashboardLayout />,
     children: [
       {
         path: "/dashboard",
         element: (
           <>
-            <HomePageDashboad />
+            {/* <HomePageDashboad /> */}
+            <UserDashboardHomePage />
           </>
         ),
       },
       {
         path: "/dashboard/supplies",
         element: <AllSupply />,
+      },
+      {
+        path: "/dashboard/user-profile",
+        element: <UserProfile />,
       },
       {
         path: "/dashboard/create-supply",

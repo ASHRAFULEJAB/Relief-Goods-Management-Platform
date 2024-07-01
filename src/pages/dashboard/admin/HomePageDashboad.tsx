@@ -1,7 +1,7 @@
 import PieLayout from "@/components/pieChart/PieLayout";
 
 import { Link } from "react-router-dom";
-import { TSupply } from "../allSupply";
+import { TSupply } from "../../allSupply";
 import { useGetSuppliesQuery } from "@/redux/features/supply/supplyApi";
 // import { useGetSuppliesQuery } from "@/redux/api/baseApi";
 
