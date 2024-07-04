@@ -45,7 +45,9 @@ const Home = () => {
   const limitedReliefs = reliefs?.data?.slice(0, 3);
   return (
     <div>
-      <Banner />
+      {/* <div className="w-full">
+        <Banner />
+      </div> */}
 
       <div className="relative">
         <div className="grid lg:grid-cols-3 grid-cols-1 gap-3 overflow-y-hidden ">

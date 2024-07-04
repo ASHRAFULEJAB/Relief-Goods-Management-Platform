@@ -1,8 +1,9 @@
-import Container from "@/components/Container";
-import heroImage from "../../assets/images/heroimage1.png";
-import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import donation from "../../assets/images/donation.avif";
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import bannerHero from "../../assets/images/bannerhero.png";
+import heroImage from "../../assets/images/heroimage1.png";
+import logo from "../../assets/images/logo.png";
 const intro = {
   hidden: { opacity: 0 },
   visible: {
@@ -43,6 +44,14 @@ const laptop = {
 };
 
 const Banner = () => {
+  const [showLogo, setShowLogo] = useState(true);
+
+  // Hide the logo after a delay or after loading is done
+  useEffect(() => {
+    const timer = setTimeout(() => setShowLogo(false), 1000); // Adjust the delay as needed
+
+    return () => clearTimeout(timer);
+  }, []);
   return (
     <div
       className="overflow-hidden"
@@ -50,41 +59,65 @@ const Banner = () => {
         backgroundImage: `url(${heroImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
+        height: "580px",
       }}
     >
-      <Container className="h-screen pt-16 grid grid-cols-1 lg:grid-cols-2 place-content-center">
-        <motion.div variants={intro} initial="hidden" animate="visible">
-          <motion.h1
-            className="text-2xl lg:text-5xl font-bold text-nowrap mt-16"
-            variants={introChildren}
+      <div
+        className="  w-full max-w-[1230px]  px-[20px] mx-auto
+      grid grid-cols-1 lg:grid-cols-2 place-content-center"
+      >
+        <div className="lg:flex">
+          <motion.div
+            variants={intro}
+            initial="hidden"
+            animate="visible"
+            className="mt-48"
           >
-            <span className="text-white">
-              {" "}
-              Doante Now <span className="text-blue-400">For</span>
-            </span>
-            <br />
-            <span className="text-white">Needy People</span>
-          </motion.h1>
+            <motion.h1
+              className="text-2xl lg:text-5xl font-semibold text-nowrap mt-0"
+              variants={introChildren}
+            >
+              <span className="text-white">
+                {" "}
+                Empowering hope <span className="text-blue-400">futures</span>
+              </span>
+              <br />
+              <span className="text-white">lives through giving</span>
+            </motion.h1>
+            <motion.p className="text-white text-wrap">
+              Join us in a collective journey of compassion and impact as we
+              work hand in hand, transforming lives and nurturing hope around
+              the world.
+            </motion.p>
 
-          <motion.div variants={introChildren}>
-            <Button
-              className=" mt-10 w-full px-5 py-2  text-sm font-medium text-white
+            <motion.div variants={introChildren}>
+              <Button
+                className=" mt-3 w-full px-5 py-2  text-sm font-medium text-white
            capitalize transition-colors duration-300 transform bg-[#E37423] rounded-md
            lg:w-auto hover:bg-[#E37423] focus:outline-none focus:bg-[#E37423]"
-            >
-              Start Donating
-            </Button>
+              >
+                Make Donation
+              </Button>
+            </motion.div>
           </motion.div>
-        </motion.div>
-        <motion.div
-          className="mt-10 w-3/4 lg:w-full mx-auto"
-          variants={laptop}
-          initial="initial"
-          animate="animate"
-        >
-          <img className="h-[95%] object-contain" src={donation} alt="" />
-        </motion.div>
-      </Container>
+          <motion.img
+            src={bannerHero}
+            alt=""
+            className=" w-full lg:ml-6 h-[500px] lg:mt-20"
+          />
+        </div>
+
+        {showLogo && (
+          <motion.div
+            className="mt-10 w-3/4 lg:w-full mx-auto"
+            variants={laptop}
+            initial="initial"
+            animate="animate"
+          >
+            <img className="h-[45%] object-contain" src={logo} alt="" />
+          </motion.div>
+        )}
+      </div>
     </div>
     // <div className="overflow-hidden ">
     //   <header>

@@ -20,30 +20,41 @@ const Navbar = () => {
         className="flex w-full  flex-wrap items-center justify-between 
        max-w-[1230px] px-[20px] mx-auto "
       >
-        <div className="hidden lg:flex">
-          <Link className="mx-2  flex items-center" to="/">
+        <div className="hidden lg:flex items-center justify-center">
+          <Link className="  flex items-center" to="/">
             <img
-              className="me-2"
+              className="me-0"
               src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
               style={{ height: "48px" }}
               alt="TE Logo"
               loading="lazy"
             />
           </Link>
+          <Link
+            className="text-white transition duration-200  hover:ease-in-out 
+                focus:text-white active:text-white motion-reduce:transition-none
+                 e/80 e/80 te/80 lg:px-2"
+            aria-current="page"
+            to="/"
+            data-twe-nav-link-ref
+          >
+            PH RELIEF FUND
+          </Link>
         </div>
 
         {/* Toggle Button for Mobile */}
         <button
-          className=" border-0 flex justify-between space-x-36  bg-transparent px-2 text-white hover:no-underline 
+          className="  flex justify-between space-x-36  bg-transparent 
+          text-white hover:no-underline 
           hover:shadow-none focus:no-underline focus:shadow-none focus:outline-none 
           focus:ring-0 0 lg:hidden"
           type="button"
           onClick={toggleMobileMenu}
         >
-          <Link className="mx-2 my-1 flex items-center" to="#">
+          <Link className=" flex items-center" to="#">
             <img
-              className="me-2"
-              src="https://tecdn.b-cdn.net/img/logo/te-transparent-noshadows.webp"
+              className="me-2 bg-transparent"
+              src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
               style={{ height: "20px" }}
               alt="TE Logo"
               loading="lazy"
@@ -172,18 +183,7 @@ const Navbar = () => {
             <li
               className="my-4 ps-2 lg:my-0 lg:pe-1 lg:ps-2"
               data-twe-nav-item-ref
-            >
-              <Link
-                className="text-white transition duration-200  hover:ease-in-out 
-                focus:text-white active:text-white motion-reduce:transition-none
-                 e/80 e/80 te/80 lg:px-2"
-                aria-current="page"
-                to="/"
-                data-twe-nav-link-ref
-              >
-                PH RELIEF FUND
-              </Link>
-            </li>
+            ></li>
           </ul>
 
           <div className="flex items-center">
@@ -213,17 +213,17 @@ const Navbar = () => {
               {" "}
               <Button
                 type="button"
-                className="me-3 inline-block rounded bg-white px-3 py-2.5 text-xs font-medium uppercase
-               leading-normal text-black shadow-dark-3 transition duration-150 
-               ease-in-out hover:bg-white hover:shadow-dark-2 focus:bg-neutral-700 
+                className="me-3 inline-block rounded bg-[#E37423] px-3 py-2.5 text-xs font-medium uppercase
+               leading-normal text-white shadow-dark-3 transition duration-150 
+               ease-in-out hover:bg-[#E37423] hover:shadow-dark-2 focus:bg-neutral-700 
                focus:shadow-dark-2 focus:outline-none focus:ring-0 active:bg-neutral-900 
                active:shadow-dark-2 motion-reduce:transition-none 
                rk-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
               >
-                Login
+                Get in touch
               </Button>
             </Link>
-            <Link to="/register">
+            {/* <Link to="/register">
               <Button
                 type="button"
                 data-twe-ripple-init
@@ -237,7 +237,7 @@ const Navbar = () => {
               >
                 Register
               </Button>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </div>
