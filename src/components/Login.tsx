@@ -12,8 +12,9 @@ const Login = () => {
   const dispatch = useAppDispatch();
   const { register, handleSubmit } = useForm({
     defaultValues: {
-      email: "example@gmail.com",
-      password: "example123",
+      email: "",
+      password: "",
+      role: "",
     },
   });
   const onSubmit = async (data: { email: string; password: string }) => {
@@ -200,6 +201,7 @@ const Login = () => {
                         <p className="text-white">
                           example User Password:: example123
                         </p>
+                        <p className="text-white">role:: user</p>
                       </div>
                     </div>
                   </div>

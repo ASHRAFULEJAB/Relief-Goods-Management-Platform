@@ -13,6 +13,8 @@ const AllRelief = () => {
     <>
       <h1 className="bg-white text-white">hey</h1>
       <h1 className="bg-white text-white">hey</h1>
+      <h1 className="bg-white text-white">hey</h1>
+      <h1 className="bg-white text-white">hey</h1>
       <div className="text-center py-8 bg-gray-50 mb-3 rounded">
         <h1 className="text-4xl font-bold">
           Support our <span className="text-[#E37423]">causes</span> today

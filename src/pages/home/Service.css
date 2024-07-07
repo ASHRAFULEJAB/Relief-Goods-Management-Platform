@@ -1,5 +1,3 @@
-/* Service.css */
-
 .service-container {
     font-family: 'Arial, sans-serif';
     padding: 20px;
@@ -18,7 +16,7 @@
 }
 
 .service-highlight {
-    color: #e84a5f;
+    color: #E37423;
 }
 
 .service-header p {
@@ -30,6 +28,7 @@
     display: flex;
     justify-content: space-around;
     gap: 20px;
+    flex-wrap: wrap;
 }
 
 .service-card {
@@ -38,8 +37,9 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     padding: 20px;
     width: 30%;
-    text-align: left;
+    text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
+    margin-bottom: 20px;
 }
 
 .service-card:hover {
@@ -78,15 +78,45 @@
 }
 
 .service-button {
-    background-color: #e84a5f;
+    background-color:#E37423;
     color: white;
     border: none;
     border-radius: 5px;
+    align-items: center;
     padding: 10px 20px;
     cursor: pointer;
     transition: background-color 0.3s;
 }
 
 .service-button:hover {
-    background-color: #d43f4b;
+    background-color: #e87420;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .service-card {
+        width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .service-header h1 {
+        font-size: 1.5em;
+    }
+
+    .service-header p {
+        font-size: 1em;
+    }
+
+    .service-card {
+        width: 100%;
+    }
+
+    .service-card h2 {
+        font-size: 1.2em;
+    }
+
+    .service-card p {
+        font-size: 0.9em;
+    }
 }

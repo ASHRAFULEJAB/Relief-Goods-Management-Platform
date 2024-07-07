@@ -8,9 +8,6 @@ import AllSupply from "@/pages/allSupply";
 import DashboardLayout from "@/pages/dashboard/admin/DashboardLayout";
 
 import HomePageDashboad from "@/pages/dashboard/admin/HomePageDashboad";
-import UserDashboard from "@/pages/dashboard/user/UserDashboard";
-import UserDashboardHomePage from "@/pages/dashboard/user/UserDashboardHomePage";
-import UserDashboardLayout from "@/pages/dashboard/user/UserDashboardLayout";
 import UserProfile from "@/pages/dashboard/user/UserProfile";
 import Home from "@/pages/home/Home";
 
@@ -46,14 +43,14 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <UserDashboardLayout />,
+    element: <DashboardLayout />,
     children: [
       {
         path: "/dashboard",
         element: (
           <>
-            {/* <HomePageDashboad /> */}
-            <UserDashboardHomePage />
+            <HomePageDashboad />
+            {/* <UserDashboardHomePage /> */}
           </>
         ),
       },

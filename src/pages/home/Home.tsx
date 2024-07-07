@@ -1,14 +1,13 @@
 import Loader from "@/components/Loader";
-import Testimonial from "@/components/Testimonial";
 import { useGetReliefsQuery } from "@/redux/features/supply/supplyApi";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Aboutus from "../Aboutus";
 import AllReliefCard from "../Allrelief/AllReliefCard";
-import DistributionCenterLocation from "../DistributionCenterLocation";
-import Carousal from "./Carousal";
-import CommunityGratitudeWall from "./CommunityGratitudeWall";
+import Contact from "./Contact";
+import Partners from "./Partners";
 import Service from "./Service";
+import Stories from "./testimonial/Stories";
+import Promotions from "./Promotions";
 
 export type TRelief = {
   _id: string;
@@ -84,19 +83,24 @@ const Home = () => {
 
       {/* Reliefs Section */}
       <>
-        <div className="grid lg:grid-cols-4 grid-cols-1 gap-3 overflow-y-hidden ">
+        <div className="grid lg:grid-cols-4 grid-cols-1 gap-3 overflow-y-hidden lg:mr-1 ">
           {limitedReliefs?.map((relief: TRelief) => (
             <AllReliefCard key={relief?._id} {...relief} />
           ))}
         </div>
       </>
 
-      <Testimonial />
-      <Carousal />
-      <Aboutus />
-      <DistributionCenterLocation />
-      <CommunityGratitudeWall />
       <Service />
+      <Promotions />
+      {/* <Testimonial /> */}
+      <Partners />
+      <Stories />
+      <Contact />
+
+      {/* <Carousal /> */}
+      {/* <Aboutus /> */}
+      {/* <DistributionCenterLocation /> */}
+      {/* <CommunityGratitudeWall /> */}
     </div>
   );
 };

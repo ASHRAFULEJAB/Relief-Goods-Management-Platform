@@ -1,0 +1,24 @@
+.partners {
+  text-align: center;
+  background-color: #fff;
+  padding: 20px;
+}
+
+.partners h2 {
+  font-size: 1em;
+  margin-bottom: 20px;
+  color: #545454;
+}
+
+.partnerslogos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.partnerslogos img {
+  width: 100px;
+  height: auto;
+  filter: grayscale(100%);
+}

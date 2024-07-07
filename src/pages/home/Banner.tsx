@@ -74,7 +74,7 @@ const Banner = () => {
             className="mt-48"
           >
             <motion.h1
-              className="text-2xl lg:text-5xl font-semibold text-nowrap mt-0"
+              className="text-2xl lg:text-5xl font-semibold text-nowrap mt-0 mb-3"
               variants={introChildren}
             >
               <span className="text-white">
@@ -92,7 +92,7 @@ const Banner = () => {
 
             <motion.div variants={introChildren}>
               <Button
-                className=" mt-3 w-full px-5 py-2  text-sm font-medium text-white
+                className=" mt-10 w-full px-5 py-2  text-sm font-medium text-white
            capitalize transition-colors duration-300 transform bg-[#E37423] rounded-md
            lg:w-auto hover:bg-[#E37423] focus:outline-none focus:bg-[#E37423]"
               >

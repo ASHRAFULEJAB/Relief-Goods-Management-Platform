@@ -15,15 +15,16 @@ const AllReliefCard = ({
   _id,
   image,
   title,
-  description,
+
   descriptionHeader,
   donationAmount,
-  category,
+
   amount,
 }: TRelief) => {
   //   console.log(relief);
   //   const { image, titile, category, amount } = relief;
-  const progress = (amount / 10000) * 100; // Calculate progress percentage
+  const amontconvert = Number(amount);
+  const progress = (amontconvert / 10000) * 100; // Calculate progress percentage
 
   return (
     <div

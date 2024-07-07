@@ -62,7 +62,7 @@ const Dashboard = () => {
                     alt="Windster Logo"
                   />
                   <span className="self-center text-white whitespace-nowrap">
-                    PH Relieft Fund Admin
+                    PH Relief Fund User Dashboard
                   </span>
                 </Link>
                 <form
