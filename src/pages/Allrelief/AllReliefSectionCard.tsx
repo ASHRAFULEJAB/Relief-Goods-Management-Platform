@@ -15,10 +15,10 @@ const AllReliefSectionCard = ({
   _id,
   image,
   title,
-  description,
+
   descriptionHeader,
   donationAmount,
-  category,
+  
   amount,
 }: TRelief) => {
   const progress = (parseFloat(amount) / 10000) * 100; // Calculate progress percentage

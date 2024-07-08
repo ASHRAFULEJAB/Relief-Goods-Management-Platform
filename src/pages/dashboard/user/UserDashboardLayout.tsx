@@ -1,9 +1,15 @@
+import { ReactNode } from "react";
 import UserDashboard from "./UserDashboard";
 
-const UserDashboardLayout = () => {
+interface AdminLayoutProps {
+  children?: ReactNode;
+}
+
+const UserDashboardLayout = ({ children }: AdminLayoutProps) => {
   return (
     <div>
       <UserDashboard />
+      {children}
     </div>
   );
 };

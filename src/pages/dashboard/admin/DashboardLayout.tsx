@@ -1,9 +1,9 @@
-import Dashboard from ".";
+import AdminDashboard from ".";
 
 const DashboardLayout = () => {
   return (
     <div>
-      <Dashboard />
+      <AdminDashboard />
     </div>
   );
 };

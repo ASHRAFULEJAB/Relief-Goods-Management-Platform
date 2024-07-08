@@ -1,9 +1,19 @@
 // DetailedSection.jsx
-import React from "react";
+
 import { Link } from "react-router-dom";
 import SingleReliefModal from "./SingleReliefModal";
+interface DetailedSectionProps {
+  image: string;
+  title: string;
+  amount: number;
+  raisedAmount: number;
+  description: string;
+  showModal: boolean;
+  handleDonate: () => void;
+  setShowModal: (show: boolean) => void;
+}
 
-const DetailedSection = ({
+const DetailedSection: React.FC<DetailedSectionProps> = ({
   image,
   title,
   amount,

@@ -1,151 +1,197 @@
+import { useState } from "react";
 import { Outlet } from "react-router";
 import { Link } from "react-router-dom";
 
 const UserDashboard = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
   return (
     <div>
-      {/* <!-- component --> */}
-      <div className="h-screen w-full flex overflow-hidden select-none">
-        <nav className="w-24 flex flex-col items-center bg-white dark:bg-gray-800 py-4">
-          {/* <!-- Left side NavBar --> */}
-
-          <div>
-            {/* <!-- App Logo --> */}
-
-            <Link to="/">
-              {" "}
-              <img
-                src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
-                className="h-10 mr-2"
-                alt="Windster Logo"
-              />
-            </Link>
-          </div>
-
-          <ul className="mt-2 text-gray-700 dark:text-gray-400 capitalize">
-            {/* <!-- Links --> */}
-
-            <li className="mt-3 p-2 text-blue-600 dark:text-blue-300 rounded-lg">
-              <Link to="/dashboard" className=" flex flex-col items-center">
-                <svg className="fill-current h-5 w-5" viewBox="0 0 24 24">
-                  <path
-                    d="M19 5v2h-4V5h4M9 5v6H5V5h4m10 8v6h-4v-6h4M9
-							17v2H5v-2h4M21 3h-8v6h8V3M11 3H3v10h8V3m10
-							8h-8v10h8V11m-10 4H3v6h8v-6z"
-                  ></path>
-                </svg>
-                <span className="text-xs mt-2">dashBoard</span>
-              </Link>
-            </li>
-
-            <li
-              className="mt-3 p-2 hover:text-blue-600 dark-hover:text-blue-300
-				rounded-lg"
-            >
-              <Link to="/dashboard" className=" flex flex-col items-center">
-                <svg className="fill-current h-5 w-5" viewBox="0 0 24 24">
-                  <path
-                    d="M23 3v-.5a2.5 2.5 0 00-5 0V3c-.55 0-1 .45-1 1v4c0
-							.55.45 1 1 1h5c.55 0 1-.45 1-1V4c0-.55-.45-1-1-1m-1
-							0h-3v-.5c0-.83.67-1.5 1.5-1.5s1.5.67 1.5 1.5V3M6
-							11h9v2H6v-2m0-4h9v2H6V7m16 4v5c0 1.11-.89 2-2 2H6l-4
-							4V4a2 2 0 012-2h11v2H4v13.17L5.17 16H20v-5h2z"
-                  ></path>
-                </svg>
-                <span className="text-xs mt-2">Posts</span>
-              </Link>
-            </li>
-
-            <li
-              className="mt-3 p-2 hover:text-blue-600 dark-hover:text-blue-300
-				rounded-lg"
-            >
-              <Link to="/dashboard" className=" flex flex-col items-center">
-                <svg className="fill-current h-5 w-5" viewBox="0 0 24 24">
-                  <path
-                    d="M21 18v1a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0
-							012-2h14a2 2 0 012 2v1h-9a2 2 0 00-2 2v8a2 2 0 002
-							2m0-2h10V8H12m4 5.5a1.5 1.5 0 01-1.5-1.5 1.5 1.5 0
-							011.5-1.5 1.5 1.5 0 011.5 1.5 1.5 1.5 0 01-1.5 1.5z"
-                  ></path>
-                </svg>
-                <span className="text-xs mt-2">Donations</span>
-              </Link>
-            </li>
-
-            <li
-              className="mt-3 p-2 hover:text-blue-600 dark-hover:text-blue-300
-				rounded-lg"
-            >
-              <Link
-                to="/dashboard/user-profile"
-                className=" flex flex-col items-center"
+      <nav className="bg-[#074495] border-b border-gray-200 fixed z-30 w-full">
+        <div className="px-3 py-3 lg:px-5 lg:pl-3">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center justify-start">
+              <button
+                onClick={toggleSidebar}
+                id="toggleSidebarMobile"
+                aria-expanded={isSidebarOpen ? "true" : "false"}
+                aria-controls="sidebar"
+                className="lg:hidden mr-2 text-white hover:text-gray-900 cursor-pointer p-2 hover:bg-gray-100 focus:bg-gray-100 focus:ring-2 focus:ring-gray-100 rounded"
               >
-                <svg className="fill-current h-5 w-5" viewBox="0 0 512 512">
+                <svg
+                  id="toggleSidebarMobileHamburger"
+                  className={`w-6 h-6 ${isSidebarOpen ? "hidden" : ""}`}
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
-                    d="M505 442.7L405.3
-							343c-4.5-4.5-10.6-7-17-7H372c27.6-35.3 44-79.7
-							44-128C416 93.1 322.9 0 208 0S0 93.1 0 208s93.1 208
-							208 208c48.3 0 92.7-16.4 128-44v16.3c0 6.4 2.5 12.5 7
-							17l99.7 99.7c9.4 9.4 24.6 9.4 33.9
-							0l28.3-28.3c9.4-9.4 9.4-24.6.1-34zM208 336c-70.7
-							0-128-57.2-128-128 0-70.7 57.2-128 128-128 70.7 0 128
-							57.2 128 128 0 70.7-57.2 128-128 128z"
+                    fillRule="evenodd"
+                    d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h6a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                    clipRule="evenodd"
                   ></path>
                 </svg>
-                <>
-                  <span className="text-xs mt-2">Profile</span>
-                </>
-              </Link>
-            </li>
-
-            <li
-              className="mt-3 p-2 hover:text-blue-600 dark-hover:text-blue-300
-				rounded-lg"
-            >
+                <svg
+                  id="toggleSidebarMobileClose"
+                  className={`w-6 h-6 ${isSidebarOpen ? "" : "hidden"}`}
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                    clipRule="evenodd"
+                  ></path>
+                </svg>
+              </button>
               <Link
-                to="/dashboard/supplies"
-                className=" flex flex-col items-center"
+                to="/"
+                className="text-xl font-bold flex items-center lg:ml-2.5"
               >
-                <svg className="fill-current h-5 w-5" viewBox="0 0 24 24">
-                  <path
-                    d="M19 19H5V8h14m0-5h-1V1h-2v2H8V1H6v2H5a2 2 0 00-2
-							2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2m-2.47
-							8.06L15.47 10l-4.88 4.88-2.12-2.12-1.06 1.06L10.59
-							17l5.94-5.94z"
-                  ></path>
-                </svg>
-                <>
-                  <span className="text-xs mt-2">Reliefs</span>
-                </>
-              </Link>
-            </li>
-          </ul>
-
-          <div
-            className="mt-auto flex items-center p-2 text-blue-700 bg-purple-200
-			dark:text-blue-500 rounded-full"
-          >
-            {/* <!-- important action --> */}
-
-            <Link to="/login">
-              <svg className="fill-current h-15 w-5" viewBox="0 0 15 15">
-                <path
-                  d="M13.5 7.5L10.5 10.75M13.5 7.5L10.5 4.5M13.5 7.5L4 7.5M8 13.5H1.5L1.5 1.5L8 1.5"
-                  stroke="#000000"
+                <img
+                  src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
+                  className="h-10 mr-2"
+                  alt="Logo"
                 />
-              </svg>
-              {/* <svg
-                width="800px"
-                height="800px"
-                viewBox="0 0 15 15"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              ></svg> */}
-            </Link>
+                <span className="self-center text-white whitespace-nowrap">
+                  PH Relief Fund User Dashboard
+                </span>
+              </Link>
+            </div>
+            <div className="flex items-center">
+              <Link
+                to="/dashboard/create-supply"
+                className="hidden sm:inline-flex ml-5 text-white bg-cyan-600 hover:bg-cyan-700 focus:ring-4 focus:ring-cyan-200 font-medium rounded-lg text-sm px-5 py-2.5 text-center items-center mr-3"
+                style={{
+                  background:
+                    "linear-gradient(to right, #0F4C99, #074495, #074495,#658BBB)",
+                }}
+              >
+                <svg
+                  className="svg-inline--fa fa-gem -ml-1 mr-2 h-4 w-4"
+                  aria-hidden="true"
+                  focusable="false"
+                  data-prefix="fas"
+                  data-icon="gem"
+                  role="img"
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 512 512"
+                >
+                  <path
+                    fill="currentColor"
+                    d="M378.7 32H133.3L256 182.7L378.7 32zM512 192l-107.4-141.3L289.6 192H512zM107.4 50.67L0 192h222.4L107.4 50.67zM244.3 474.9C247.3 478.2 251.6 480 256 480s8.653-1.828 11.67-5.062L510.6 224H1.365L244.3 474.9z"
+                  ></path>
+                </svg>
+                Add Your Supply
+              </Link>
+            </div>
           </div>
-        </nav>
-        <Outlet />
+        </div>
+      </nav>
+      <div className="flex overflow-hidden bg-white pt-16">
+        <aside
+          id="sidebar"
+          className={`fixed z-20 h-full top-0 left-0 pt-16 flex lg:flex flex-shrink-0 flex-col w-64 transition-width duration-75 ${
+            isSidebarOpen ? "" : "hidden lg:block"
+          }`}
+          aria-label="Sidebar"
+        >
+          <div className="relative flex-1 flex flex-col min-h-0 border-r border-gray-200 bg-white pt-0">
+            <div className="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+              <div className="flex-1 px-3 bg-white divide-y space-y-1">
+                <ul className="space-y-2 pb-2">
+                  <li>
+                    <Link
+                      to="/dashboard"
+                      className="text-base text-gray-900 font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 group"
+                    >
+                      <svg
+                        className="w-6 h-6 text-gray-500 group-hover:text-gray-900 transition duration-75"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M2 10a8 8 0 018-8v8h8a8 8 0 11-16 0z"></path>
+                        <path d="M12 2.252A8.014 8.014 0 0117.748 8H12V2.252z"></path>
+                      </svg>
+                      <span className="ml-3">Dashboard</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/dashboard/supplies"
+                      className="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group"
+                    >
+                      <svg
+                        className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                      </svg>
+                      <span className="ml-3 flex-1 whitespace-nowrap">
+                        All Supply
+                      </span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
+                      to="/dashboard/create-supply"
+                      className="text-base text-gray-900 font-normal rounded-lg hover:bg-gray-100 flex items-center p-2 group"
+                    >
+                      <svg
+                        className="w-6 h-6 text-gray-500 flex-shrink-0 group-hover:text-gray-900 transition duration-75"
+                        fill="currentColor"
+                        viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                          clipRule="evenodd"
+                        ></path>
+                      </svg>
+                      <span className="ml-3 flex-1 whitespace-nowrap">
+                        Add Supply
+                      </span>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div>
+                <li className="mt-48">
+                  <Link
+                    to="/login"
+                    className="block px-3 py-2.5 hover:text-primary-600
+                    me-3 rounded bg-white text-center text-xs font-medium uppercase
+                   leading-normal text-black shadow-dark-3 transition duration-150 
+                   ease-in-out hover:bg-white hover:shadow-dark-2 focus:bg-neutral-700 
+                   focus:shadow-dark-2 focus:outline-none focus:ring-0 active:bg-neutral-900 
+                   active:shadow-dark-2 motion-reduce:transition-none 
+                   rk-strong dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+                  >
+                    Logout
+                  </Link>
+                </li>
+              </div>
+            </div>
+          </div>
+        </aside>
+        <div
+          className="bg-gray-900 opacity-50 hidden fixed inset-0 z-10"
+          id="sidebarBackdrop"
+        ></div>
+        <div
+          id="main-content"
+          className="h-full w-full bg-gray-50 relative overflow-y-auto lg:ml-64"
+        >
+          <Outlet />
+        </div>
       </div>
     </div>
   );

@@ -1,9 +1,7 @@
-import { useState } from "react";
-import { useParams } from "react-router-dom";
-import SingleReliefModal from "./SingleReliefModal";
 import Loader from "@/components/Loader";
 import { useGetSingleReliefQuery } from "@/redux/features/supply/supplyApi";
-import InitialImagesSection from "./InitialImagesSection";
+import { useState } from "react";
+import { useParams } from "react-router-dom";
 import DetailedSection from "./DetailedSection";
 
 const SingaleRelief = () => {
@@ -22,13 +20,10 @@ const SingaleRelief = () => {
   }
   const { result } = data;
   const {
-    _id,
     image,
     title,
     description,
-    descriptionHeader,
-    donationAmount,
-    category,
+
     amount,
   } = result;
 

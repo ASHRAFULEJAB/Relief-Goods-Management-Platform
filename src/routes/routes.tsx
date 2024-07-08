@@ -5,9 +5,9 @@ import AddSupply from "@/pages/AddSupply";
 import AllRelief from "@/pages/Allrelief/AllRelief";
 import SingaleRelief from "@/pages/Allrelief/SingaleRelief";
 import AllSupply from "@/pages/allSupply";
-import DashboardLayout from "@/pages/dashboard/admin/DashboardLayout";
-
 import HomePageDashboad from "@/pages/dashboard/admin/HomePageDashboad";
+import DynamicLayout from "@/pages/dashboard/dynamicLayout";
+import UserDashboardHomePage from "@/pages/dashboard/user/UserDashboardHomePage";
 import UserProfile from "@/pages/dashboard/user/UserProfile";
 import Home from "@/pages/home/Home";
 
@@ -32,7 +32,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-
   {
     path: "login",
     element: <Login />,
@@ -43,28 +42,27 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <DashboardLayout />,
+    element: <DynamicLayout />,
     children: [
       {
-        path: "/dashboard",
-        element: (
-          <>
-            <HomePageDashboad />
-            {/* <UserDashboardHomePage /> */}
-          </>
-        ),
+        index: true,
+        element: <UserDashboardHomePage />, // Default user dashboard content
       },
       {
-        path: "/dashboard/supplies",
+        path: "supplies",
         element: <AllSupply />,
       },
       {
-        path: "/dashboard/user-profile",
+        path: "user-profile",
         element: <UserProfile />,
       },
       {
-        path: "/dashboard/create-supply",
+        path: "create-supply",
         element: <AddSupply />,
+      },
+      {
+        path: "admin-dashboard",
+        element: <HomePageDashboad />, // Admin dashboard content
       },
     ],
   },

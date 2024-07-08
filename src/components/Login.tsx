@@ -1,46 +1,50 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { verifyToken } from "@/lib/verifyToken";
 import { useLoginMutation } from "@/redux/features/auth/authApi";
 import { setUser } from "@/redux/features/auth/authSlice";
-
 import { useAppDispatch } from "@/redux/hooks";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [login] = useLoginMutation();
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm({
     defaultValues: {
       email: "",
       password: "",
-      role: "",
     },
   });
+
   const onSubmit = async (data: { email: string; password: string }) => {
-    const userInfo = {
-      email: data.email,
-      password: data.password,
-    };
+    try {
+      const userInfo = {
+        email: data.email,
+        password: data.password,
+      };
 
-    const res = await login(userInfo).unwrap();
-    console.log(res);
-    const user = verifyToken(res.data.accesstoken);
+      const res = await login(userInfo).unwrap();
+      const decodedToken = verifyToken(res.data.accesstoken);
 
-    dispatch(setUser({ user: user, token: res.data.accessToken }));
+      document.cookie = `accesstoken=${res.data.accesstoken}; path=/;`;
+
+      dispatch(setUser({ user: decodedToken, token: res.data.accesstoken }));
+
+      // Redirect to home page after successful login
+      navigate("/");
+    } catch (error) {
+      console.error("Failed to login:", error);
+    }
   };
+
   return (
     <div>
-      <section className="gradient-form h-full  ">
+      <section className="gradient-form h-full">
         <div className="">
-          <div
-            className="flex  flex-wrap items-center justify-center 
-           text-neutral-200"
-          >
+          <div className="flex flex-wrap items-center justify-center text-neutral-200">
             <div className="w-full h-screen">
-              <div className="  bg-neutral-800 h-full ">
-                <div className=" h-screen lg:flex lg:flex-wrap">
-                  {/* <!-- Left column container with background and description--> */}
+              <div className="bg-neutral-800 h-full">
+                <div className="h-screen lg:flex lg:flex-wrap">
                   <div
                     className="flex items-center lg:w-7/12"
                     style={{
@@ -61,13 +65,10 @@ const Login = () => {
                       </div>
                     </div>
                   </div>
-                  {/* <!-- Right column container--> */}
                   <div className="px-4 md:px-0 lg:w-5/12 bg-neutral-800">
                     <div className="md:mx-6 md:p-12">
-                      {/* <!--Logo--> */}
                       <div className="text-center">
                         <Link to="/">
-                          {" "}
                           <img
                             className="mx-auto w-48"
                             src="https://tecdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/lotus.webp"
@@ -83,7 +84,6 @@ const Login = () => {
                         <p className="mb-4 text-white">
                           Please login to your account
                         </p>
-                        {/* <!--Username input--> */}
                         <div
                           className="relative mb-4"
                           data-twe-input-wrapper-init
@@ -91,33 +91,18 @@ const Login = () => {
                           <input
                             {...register("email")}
                             type="email"
-                            className="peer block min-h-[auto] w-full rounded border-2
-                             bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all 
-                             duration-200 ease-linear focus:placeholder:opacity-100 
-                              
-                             data-[twe-input-state-active]:placeholder:opacity-100 
-                             motion-reduce:transition-none text-white 
-                             placeholder:text-neutral-300 
-                             autofill:shadow-autofill  
-                             [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
+                            className="peer block min-h-[auto] w-full rounded border-2 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none text-white placeholder:text-neutral-300 autofill:shadow-autofill [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
                             id="exampleFormControlInput1"
                             placeholder="Enter your Email"
                           />
                           <label
                             htmlFor="exampleFormControlInput1"
-                            className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%]
-                             origin-[0_0] truncate pt-[0.37rem] leading-[1.6]  transition-all 
-                             duration-200 ease-out peer-focus:-translate-y-[0.9rem]
-                              peer-focus:scale-[0.8]  
-                              peer-data-[twe-input-state-active]:-translate-y-[0.9rem]
-                               peer-data-[twe-input-state-active]:scale-[0.9] 
-                               motion-reduce:transition-none text-neutral-400 "
+                            className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.9] motion-reduce:transition-none text-neutral-400"
                           >
                             Email
                           </label>
                         </div>
 
-                        {/* <!--Password input--> */}
                         <div
                           className="relative mb-4"
                           data-twe-input-wrapper-init
@@ -125,32 +110,21 @@ const Login = () => {
                           <input
                             {...register("password")}
                             type="password"
-                            className="peer block min-h-[auto] w-full rounded border-2 *
-                             bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none
-                              transition-all duration-200 ease-linear focus:placeholder:opacity-100  
-                              data-[twe-input-state-active]:placeholder:opacity-100 
-                              motion-reduce:transition-none text-white placeholder:text-neutral-300 
-                              autofill:shadow-autofill  
-                              [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
+                            className="peer block min-h-[auto] w-full rounded border-2 bg-transparent px-3 py-[0.32rem] leading-[1.6] outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 data-[twe-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none text-white placeholder:text-neutral-300 autofill:shadow-autofill [&:not([data-twe-input-placeholder-active])]:placeholder:opacity-0"
                             id="exampleFormControlInput11"
                             placeholder="Password"
                           />
                           <label
                             htmlFor="exampleFormControlInput11"
-                            className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6]  transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8]  peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none text-neutral-400 "
+                            className="pointer-events-none absolute left-3 top-0 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] leading-[1.6] transition-all duration-200 ease-out peer-focus:-translate-y-[0.9rem] peer-focus:scale-[0.8] peer-data-[twe-input-state-active]:-translate-y-[0.9rem] peer-data-[twe-input-state-active]:scale-[0.8] motion-reduce:transition-none text-neutral-400"
                           >
                             Password
                           </label>
                         </div>
 
-                        {/* <!--Submit button--> */}
                         <div className="mb-12 pb-1 pt-1 text-center">
                           <button
-                            className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs 
-                            font-medium uppercase leading-normal text-white shadow-dark-3 transition
-                             duration-150 ease-in-out hover:shadow-dark-2 focus:shadow-dark-2 
-                             focus:outline-none focus:ring-0 active:shadow-dark-2 shadow-black/30 
-                             hover:shadow-dark-strong focus:shadow-dark-strong active:shadow-dark-strong"
+                            className="mb-3 inline-block w-full rounded px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-dark-3 transition duration-150 ease-in-out hover:shadow-dark-2 focus:shadow-dark-2 focus:outline-none focus:ring-0 active:shadow-dark-2 shadow-black/30 hover:shadow-dark-strong focus:shadow-dark-strong active:shadow-dark-strong"
                             type="submit"
                             data-twe-ripple-init
                             data-twe-ripple-color="light"
@@ -162,12 +136,10 @@ const Login = () => {
                             Log in
                           </button>
 
-                          {/* <!--Forgot password link--> */}
                           <a href="#!">Forgot password?</a>
                         </div>
 
-                        {/* <!--Register button--> */}
-                        <div className="flex items-center justify-between pb-6 ">
+                        <div className="flex items-center justify-between pb-6">
                           <Link to="/register">
                             <p className="mb-0 me-2 text-blue-400">
                               Don't have an account?
@@ -176,12 +148,7 @@ const Login = () => {
                           <Link to="/register">
                             <button
                               type="button"
-                              className="inline-block rounded border-2 border-danger px-6 
-                              pb-[6px] pt-2 text-xs font-medium uppercase leading-normal 
-                               transition duration-150 ease-in-out  
-                               focus:outline-none
-                               focus:ring-0 
-                                "
+                              className="inline-block rounded border-2 border-danger px-6 pb-[6px] pt-2 text-xs font-medium uppercase leading-normal transition duration-150 ease-in-out focus:outline-none focus:ring-0"
                               data-twe-ripple-init
                               data-twe-ripple-color="light"
                               style={{
@@ -194,9 +161,9 @@ const Login = () => {
                           </Link>
                         </div>
                       </form>
-                      <div className=" items-center">
+                      <div className="items-center">
                         <p className="text-white">
-                          Example User :: example@gmail.com{" "}
+                          Example User :: example@gmail.com
                         </p>
                         <p className="text-white">
                           example User Password:: example123
