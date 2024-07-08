@@ -1,16 +1,19 @@
-import { Link } from "react-router-dom";
+import Loader from "@/components/Loader";
 import PieLayout from "@/components/pieChart/PieLayout";
+import { useGetProjectsQuery } from "@/redux/features/supply/supplyApi";
+import { Link } from "react-router-dom";
+import { TProject } from "./projetcs/AllProject";
 
-import { TSupply } from "../../allSupply";
-import { useGetSuppliesQuery } from "@/redux/features/supply/supplyApi";
 const UserDashboardHomePage = () => {
-  const { data: supplies, isLoading } = useGetSuppliesQuery(undefined);
+  const { data: projects, isLoading } = useGetProjectsQuery(undefined);
+  console.log(projects);
+
   if (isLoading) {
-    return <p>loading ...</p>;
+    return <Loader />;
   }
   return (
     <main>
-      <div className="pt-6 px-4">
+      <div className="pt-6 px-4 mt-5">
         <div className="w-full grid grid-cols-1 xl:grid-cols-2 2xl:grid-cols-3 gap-4">
           <div className="bg-white shadow rounded-lg p-4 sm:p-6 xl:p-8  2xl:col-span-2">
             <div className="flex items-center justify-between mb-4">
@@ -19,7 +22,7 @@ const UserDashboardHomePage = () => {
                   $45,385
                 </span>
                 <h3 className="text-base font-normal text-gray-500">
-                  Funds this week
+                  Donation Payment all total
                 </h3>
               </div>
               <div className="flex items-center justify-end flex-1 text-green-500 text-base font-bold">
@@ -271,10 +274,10 @@ const UserDashboardHomePage = () => {
           <div className="bg-white shadow rounded-lg mb-4 p-4 sm:p-6 h-full">
             <div className="flex items-center justify-between mb-4">
               <h3 className="text-xl font-bold leading-none text-gray-900">
-                All Supplies
+                All Projects
               </h3>
               <Link
-                to="/dashboard/supplies"
+                to="/dashboard/projects"
                 className="text-sm font-medium text-cyan-600 hover:bg-gray-100 rounded-lg inline-flex items-center p-2"
               >
                 View all
@@ -282,7 +285,7 @@ const UserDashboardHomePage = () => {
             </div>
             <div className="flow-root">
               <ul role="list" className="divide-y divide-gray-200">
-                {supplies?.data?.map((supply: TSupply) => (
+                {projects?.data?.map((supply: TProject) => (
                   <li className="py-3 sm:py-4">
                     <div className="flex items-center space-x-4">
                       <div className="flex-shrink-0">
@@ -294,7 +297,7 @@ const UserDashboardHomePage = () => {
                       </div>
                       <div className="flex-1 min-w-0">
                         <p className="text-sm font-medium text-gray-900 truncate">
-                          {supply?.title}
+                          {supply?.name}
                         </p>
                         <p className="text-sm text-gray-500 truncate">
                           <Link
@@ -307,7 +310,7 @@ const UserDashboardHomePage = () => {
                         </p>
                       </div>
                       <div className="inline-flex items-center text-base font-semibold text-gray-900">
-                        ${supply?.amount}
+                        ${supply?.amountRaised}
                       </div>
                     </div>
                   </li>

@@ -15,21 +15,17 @@ const AllReliefCard = ({
   _id,
   image,
   title,
-
   descriptionHeader,
   donationAmount,
-
   amount,
 }: TRelief) => {
-  //   console.log(relief);
-  //   const { image, titile, category, amount } = relief;
   const amontconvert = Number(amount);
   const progress = (amontconvert / 10000) * 100; // Calculate progress percentage
 
   return (
     <div
-      className="block rounded-lg shadow-secondary-2 my-4 mt-10 bg-slate-100 
-      bg-surface-dark "
+      className="relative block rounded-lg shadow-secondary-2 my-4 mt-10 bg-slate-100 
+      bg-surface-dark"
     >
       <div
         className="relative overflow-hidden bg-cover bg-no-repeat"
@@ -37,7 +33,7 @@ const AllReliefCard = ({
         data-twe-ripple-color="light"
       >
         <img className="rounded-t-lg h-48 w-full " src={image} alt="" />
-        <Link to="/relief-goods/:id">
+        <Link to={`/relief-goods/${_id}`}>
           <div
             className="absolute bottom-0 left-0 right-0 top-0 h-full w-full
              overflow-hidden bg-[hsla(0,0%,98%,0.15)] bg-fixed opacity-0 transition 
@@ -50,7 +46,7 @@ const AllReliefCard = ({
           {title}
         </h5>
         <p className="mb-4 text-base text-gray-500">{descriptionHeader}</p>
-        <div className="mb-4">
+        <div className="mb-10">
           <div className="h-2 bg-gray-200 rounded-full">
             <div
               className="h-2 bg-orange-500 rounded-full"
@@ -71,12 +67,12 @@ const AllReliefCard = ({
         <Link to={`/relief-goods/${_id}`}>
           <button
             type="button"
-            className="ml-12 inline-block rounded bg-[#E37423] px-6 pb-2 pt-2.5 text-xs font-medium 
-      uppercase leading-normal text-white shadow-primary-3 transition duration-150
-       ease-in-out hover:bg-[#E37423] hover:shadow-primary-2 focus:bg-[#E37423]
-        focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-[#E37423]
-        active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong
-         dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
+            className="absolute bottom-4 left-1/2 transform -translate-x-1/2 inline-block rounded bg-[#E37423] px-6 pb-2 pt-2.5 text-xs font-medium 
+              uppercase leading-normal text-white shadow-primary-3 transition duration-150
+              ease-in-out hover:bg-[#E37423] hover:shadow-primary-2 focus:bg-[#E37423]
+              focus:shadow-primary-2 focus:outline-none focus:ring-0 active:bg-[#E37423]
+              active:shadow-primary-2 dark:shadow-black/30 dark:hover:shadow-dark-strong
+              dark:focus:shadow-dark-strong dark:active:shadow-dark-strong"
             data-twe-ripple-init
             data-twe-ripple-color="light"
           >

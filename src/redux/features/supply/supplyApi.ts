@@ -1,6 +1,5 @@
 import { baseApi } from "../../api/baseApi";
 const supplyApi = baseApi.injectEndpoints({
-  
   endpoints: (builder) => ({
     getSupplies: builder.query({
       query: () => ({
@@ -57,13 +56,42 @@ const supplyApi = baseApi.injectEndpoints({
       },
       providesTags: ["reliefs"],
     }),
+    getProjects: builder.query({
+      query: () => ({
+        url: "/projects",
+        method: "GET",
+      }),
+      providesTags: ["projects"],
+    }),
+    deleteProject: builder.mutation({
+      query: (options) => {
+        return {
+          url: `/projects/${options?.id}`,
+          method: "DELETE",
+        };
+      },
+      invalidatesTags: ["projects"],
+    }),
+    updateProject: builder.mutation({
+      query: (options) => {
+        return {
+          url: `/projects/${options?.id}`,
+          method: "PUT",
+          body: options.data,
+        };
+      },
+      invalidatesTags: ["projects"],
+    }),
   }),
 });
 export const {
+  useGetProjectsQuery,
   useGetSuppliesQuery,
   useGetReliefsQuery,
   useGetSingleReliefQuery,
   useAddSuppliesMutation,
   useDeleteSupplyMutation,
   useUpdateSupplyMutation,
+  useDeleteProjectMutation,
+  useUpdateProjectMutation,
 } = supplyApi;

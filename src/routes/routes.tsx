@@ -7,6 +7,8 @@ import SingaleRelief from "@/pages/Allrelief/SingaleRelief";
 import AllSupply from "@/pages/allSupply";
 import HomePageDashboad from "@/pages/dashboard/admin/HomePageDashboad";
 import DynamicLayout from "@/pages/dashboard/dynamicLayout";
+import Projects from "@/pages/dashboard/user/projetcs/AllProject";
+import TotalPayment from "@/pages/dashboard/user/projetcs/TotalPayment";
 import UserDashboardHomePage from "@/pages/dashboard/user/UserDashboardHomePage";
 import UserProfile from "@/pages/dashboard/user/UserProfile";
 import Home from "@/pages/home/Home";
@@ -53,12 +55,20 @@ const router = createBrowserRouter([
         element: <AllSupply />,
       },
       {
+        path: "projects",
+        element: <Projects />,
+      },
+      {
         path: "user-profile",
         element: <UserProfile />,
       },
       {
         path: "create-supply",
         element: <AddSupply />,
+      },
+      {
+        path: "all-donation",
+        element: <TotalPayment />,
       },
       {
         path: "admin-dashboard",
